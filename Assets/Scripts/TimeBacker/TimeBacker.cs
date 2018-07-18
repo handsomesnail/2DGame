@@ -13,6 +13,7 @@ public class TimeBacker : MonoBehaviour, ITimeBacker {
 
     protected virtual void Awake() {
         inverseFrames = new LinkedList<Action>();
+        currentInverseFrames = () => { };
     }
 
     protected virtual void Start() {
@@ -23,17 +24,16 @@ public class TimeBacker : MonoBehaviour, ITimeBacker {
         TimeBackManager.Instance.RemoveTimeBacker(this);
     }
 
-    protected virtual void Update() {
-        if (TimeBackManager.Instance.IsBacking) {
-            return;
-        }
+    protected virtual void LateUpdate() {
+        //添加本帧的状态
         if (inverseFrames.Count == TimeBackManager.MaxFrameCount) {
             inverseFrames.RemoveFirst();
         }
-        currentInverseFrames = () => { };//默认为空
         inverseFrames.AddLast(currentInverseFrames);
+        //重置Action
+        currentInverseFrames = () => { };
     }
-    
+
 
     public virtual void OnTimePause() {
         enabled = false;

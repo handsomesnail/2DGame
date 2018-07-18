@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhysicsObject : MonoBehaviour
+public class PhysicsObject : TimeBacker
 {
+    private struct _State {
+        public Vector2 targetVelocity;
+        public bool grounded;
+        public Vector2 groundNormal;
+        public Vector2 velocity;
+    }
 
     public float minGroundNormalY = .65f;
     public float gravityModifier = 1f;
@@ -21,28 +27,20 @@ public class PhysicsObject : MonoBehaviour
     protected const float minMoveDistance = 0.001f;
     protected const float shellRadius = 0.01f;
 
-    void OnEnable()
+    protected override void Start()
     {
+        base.Start();
         rb2d = GetComponent<Rigidbody2D>();
-    }
-
-    void Start()
-    {
         contactFilter.useTriggers = false;
         contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
         contactFilter.useLayerMask = true;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         targetVelocity = Vector2.zero;
         ComputeVelocity();
-    }
 
-    protected virtual void ComputeVelocity() { }
-
-    void FixedUpdate()
-    {
         velocity += gravityModifier * GravityManager.Instance.gravity * Time.deltaTime;
         velocity.x = targetVelocity.x;
 
@@ -62,6 +60,25 @@ public class PhysicsObject : MonoBehaviour
 
         Movement(move, true);
     }
+
+    protected override void LateUpdate() {
+        _State _state = new _State() {
+            targetVelocity = targetVelocity,
+            velocity = velocity,
+            grounded = grounded,
+            groundNormal = groundNormal,
+        };
+        currentInverseFrames += () => {
+            targetVelocity = _state.targetVelocity;
+            velocity = _state.velocity;
+            grounded = _state.grounded;
+            groundNormal = _state.groundNormal;
+        };
+        base.LateUpdate();
+    }
+
+    protected virtual void ComputeVelocity() { }
+
 
     void Movement(Vector2 move, bool yMovement)
     {
@@ -98,7 +115,6 @@ public class PhysicsObject : MonoBehaviour
                 float modifiedDistance = hitBufferList[i].distance - shellRadius;
                 distance = modifiedDistance < distance ? modifiedDistance : distance;
             }
-
 
         }
 
