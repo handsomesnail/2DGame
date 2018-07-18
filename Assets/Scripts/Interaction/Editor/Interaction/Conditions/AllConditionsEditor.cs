@@ -140,8 +140,8 @@ public class AllConditionsEditor : Editor
     private static void CreateAllConditionsAsset()
     {
         // If there's already an AllConditions asset, do nothing.
-        if(AllConditions.Instance)
-            return;
+        //if (AllConditions.Instance)
+        //    return;
 
         // Create an instance of the AllConditions object and make an asset for it.
         AllConditions instance = CreateInstance<AllConditions>();

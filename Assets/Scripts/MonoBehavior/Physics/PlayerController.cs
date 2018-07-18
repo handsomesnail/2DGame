@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class PlayerController : PhysicsObject
 {
+    private struct _State {
+        public bool isFacingRight;
+        public bool flipX;
+    }
+
     public float maxSpeed = 7f;
     public float jumpSpeed = 7f;
 
     private SpriteRenderer spriteRenderer;
     private bool isFacingRight = true;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -52,4 +58,17 @@ public class PlayerController : PhysicsObject
         targetVelocity = move * maxSpeed;
 
     }
+
+    protected override void LateUpdate() {
+        _State _state = new _State() {
+            isFacingRight = isFacingRight,
+            flipX = spriteRenderer.flipX,
+        };
+        currentInverseFrames += () => {
+            isFacingRight = _state.isFacingRight;
+            spriteRenderer.flipX = _state.flipX;
+        };
+        base.LateUpdate();
+    }
+
 }

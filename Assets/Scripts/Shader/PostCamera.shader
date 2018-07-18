@@ -22,9 +22,10 @@
 	}
 		SubShader
 		{
-			Pass
-			{
+			Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
 
+			Pass
+			{		
 
 			ZTest Always Cull Off ZWrite Off
 
