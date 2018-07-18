@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: 02c5c06c7d4ba6d4baac5f56ae3e39a2
+  productGUID: 5345f8162306c8c4c8a87a131d3a3ade
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -537,9 +537,8 @@ PlayerSettings:
   incrementalIl2cppBuild: {}
   allowUnsafeCode: 0
   additionalIl2CppArgs: 
-  scriptingRuntimeVersion: 1
-  apiCompatibilityLevelPerPlatform:
-    Standalone: 1
+  scriptingRuntimeVersion: 0
+  apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: 2DGame
@@ -615,15 +614,9 @@ PlayerSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
-<<<<<<< HEAD
-  cloudServicesEnabled:
-    UNet: 1
-  facebookSdkVersion: 7.9.4
-=======
   cloudServicesEnabled: {}
   facebookSdkVersion: 
->>>>>>> ba7d9a160fce0c19af20baaed7526783a1e885c8
-  apiCompatibilityLevel: 3
+  apiCompatibilityLevel: 2
   cloudProjectId: 
   projectName: 
   organizationId: 
