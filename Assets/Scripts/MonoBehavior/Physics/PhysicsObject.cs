@@ -13,7 +13,7 @@ public class PhysicsObject : TimeBacker
 
     public float minGroundNormalY = .65f;
     public float gravityModifier = 1f;
-
+    
     protected Vector2 targetVelocity;
     protected bool grounded;
     protected Vector2 groundNormal;
@@ -48,7 +48,7 @@ public class PhysicsObject : TimeBacker
 
         Vector2 deltaPosition = velocity * Time.deltaTime;
 
-        Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
+        Vector2 moveAlongGround = new Vector2(-groundNormal.y*GravityManager.Instance.direction.y, -groundNormal.x*GravityManager.Instance.direction.y);
 
         ///一般情况下 平行移动
         Vector2 move = moveAlongGround * deltaPosition.x;
@@ -96,7 +96,7 @@ public class PhysicsObject : TimeBacker
             for (int i = 0; i < hitBufferList.Count; i++)
             {
                 Vector2 currentNormal = hitBufferList[i].normal;
-                if (currentNormal.y > minGroundNormalY)
+                if (Mathf.Abs(currentNormal.y) > minGroundNormalY)
                 {
                     grounded = true;
                     if (yMovement)

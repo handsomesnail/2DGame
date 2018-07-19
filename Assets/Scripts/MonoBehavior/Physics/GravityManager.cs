@@ -26,4 +26,9 @@ public class GravityManager : MonoBehaviour
             return gravity.normalized;
         }
     }
+
+    public void ChangeGravityDirection()
+    {
+        Instance.gravity = -Instance.gravity;
+    }
 }
