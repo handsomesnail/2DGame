@@ -12,13 +12,13 @@ public class PlayerController : PhysicsObject
     public float maxSpeed = 7f;
     public float jumpSpeed = 7f;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private bool isFacingRight = true;
 
     protected override void Awake()
     {
         base.Awake();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     protected override void ComputeVelocity()
