@@ -25,9 +25,15 @@ public abstract class Reaction : ScriptableObject
     public void React (MonoBehaviour monoBehaviour)
     {
         ImmediateReaction ();
+        ImmediateReaction(monoBehaviour);
     }
 
 
     // This is the core of the Reaction and must be overridden to make things happpen.
     protected abstract void ImmediateReaction ();
+
+    protected virtual void ImmediateReaction(MonoBehaviour monoBehaviour) {
+
+    }
+
 }
