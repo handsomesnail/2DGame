@@ -78,5 +78,4 @@ public abstract class ReactionEditor : Editor
 
     // The inheriting class must override this function to create the label of the foldout.
     protected abstract string GetFoldoutLabel ();
-
 }

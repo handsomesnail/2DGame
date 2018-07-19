@@ -27,7 +27,6 @@ public sealed class TimeBackManager : MonoBehaviour {
         IsBacking = false;
         currentFrame = 0;
         backSpeed = 1;
-        DontDestroyOnLoad(this);
     }
 
 

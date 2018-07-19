@@ -8,37 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3206334014cfaa4fb9341e1e18852cb, type: 3}
+  m_Script: {fileID: 11500000, guid: a54f0fecf5593d84985bdc0adae0cbbc, type: 3}
   m_Name: AllConditions
   m_EditorClassIdentifier: 
-  conditions:
-  - {fileID: 114377901864544104}
-  - {fileID: 114383709200310072}
---- !u!114 &114377901864544104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f2639137684abf4a9ffe41dd7146f93, type: 3}
-  m_Name: TestConditionA
-  m_EditorClassIdentifier: 
-  description: TestConditionA
-  satisfied: 0
-  hash: 1904809462
---- !u!114 &114383709200310072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f2639137684abf4a9ffe41dd7146f93, type: 3}
-  m_Name: TestConditionB
-  m_EditorClassIdentifier: 
-  description: TestConditionB
-  satisfied: 0
-  hash: -394247092
+  conditions: []
