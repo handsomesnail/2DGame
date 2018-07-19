@@ -31,7 +31,7 @@ public abstract class DelayedReaction : Reaction
     }
 
 
-    protected IEnumerator ReactCoroutine ()
+    protected IEnumerator ReactCoroutine ( )
     {
         // Wait for the specified time.
         yield return wait;
@@ -39,4 +39,6 @@ public abstract class DelayedReaction : Reaction
         // Then call the ImmediateReaction function which must be defined in inherting classes.
         ImmediateReaction ();
     }
+
+
 }
