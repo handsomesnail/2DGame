@@ -51,7 +51,7 @@ public class PlayerController : PhysicsObject
 
         if ((isFacingRight && move.x< -0.01f)||(!isFacingRight && move.x>0.01f))
         {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            transform.localScale = new Vector3(-transform.localScale.x,transform.localScale.y,transform.localScale.z);
             isFacingRight = !isFacingRight;
         }
 
