@@ -41,7 +41,6 @@ public sealed class TimeBackManager : MonoBehaviour {
             return;
         }
 
-
         if (!IsBacking) {
             currentFrame = ++currentFrame > MaxFrameCount ? MaxFrameCount : currentFrame;
             return;
