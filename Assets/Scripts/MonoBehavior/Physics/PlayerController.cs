@@ -11,8 +11,7 @@ public class PlayerController : PhysicsObject
 
     public float maxSpeed = 7f;
     public float jumpSpeed = 7f;
-
-    public SpriteRenderer spriteRenderer;
+    
     private bool isFacingRight = true;
 
     protected override void Awake()
@@ -62,11 +61,9 @@ public class PlayerController : PhysicsObject
     protected override void LateUpdate() {
         _State _state = new _State() {
             isFacingRight = isFacingRight,
-            flipX = spriteRenderer.flipX,
         };
         currentInverseFrames += () => {
             isFacingRight = _state.isFacingRight;
-            spriteRenderer.flipX = _state.flipX;
         };
         base.LateUpdate();
     }
