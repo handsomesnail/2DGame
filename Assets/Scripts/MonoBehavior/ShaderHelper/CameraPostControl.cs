@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if POST_PROCESSING
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
@@ -27,3 +28,4 @@ public class CameraPostControl : MonoBehaviour
 		
 	}
 }
+#endif

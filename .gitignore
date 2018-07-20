@@ -38,5 +38,6 @@ ExportedObj/
 
 # Unity3D generated meta files
 *.pidb.meta
+CameraPostControl.cs
 
 ProjectSettings/ProjectSettings.asset
