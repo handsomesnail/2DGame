@@ -16,7 +16,7 @@ public class PhysicsObject : TimeBacker
     
     protected Vector2 targetVelocity;
     protected bool grounded;
-    protected Vector2 groundNormal;
+    public Vector2 groundNormal;
     protected Rigidbody2D rb2d;
     protected Vector2 velocity;
     protected ContactFilter2D contactFilter;
@@ -48,7 +48,9 @@ public class PhysicsObject : TimeBacker
 
         Vector2 deltaPosition = velocity * Time.deltaTime;
 
-        Vector2 moveAlongGround = new Vector2(-groundNormal.y*GravityManager.Instance.direction.y, -groundNormal.x*GravityManager.Instance.direction.y);
+        Vector2 moveAlongGround =      
+            moveAlongGround = new Vector2(-groundNormal.y * GravityManager.Instance.direction.y, -groundNormal.x * GravityManager.Instance.direction.y);
+   
 
         ///一般情况下 平行移动
         Vector2 move = moveAlongGround * deltaPosition.x;

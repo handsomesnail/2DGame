@@ -113,6 +113,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &26238017 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
+    type: 2}
+  m_PrefabInternal: {fileID: 1714381825}
+  m_Script: {fileID: 11500000, guid: 02f9df61323a2f5448f15248e9a396c1, type: 3}
+--- !u!212 &26238019 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 212642629912773536, guid: 6b32bd164a8ffdf42a193911310ade74,
+    type: 2}
+  m_PrefabInternal: {fileID: 1714381825}
 --- !u!1 &192412290
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,6 +974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702f9b36e760e234886a34addd9552b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 26238017}
 --- !u!1001 &1714381825
 Prefab:
   m_ObjectHideFlags: 0
@@ -1002,6 +1014,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
+        type: 2}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 26238019}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b32bd164a8ffdf42a193911310ade74, type: 2}
   m_IsPrefabParent: 0
