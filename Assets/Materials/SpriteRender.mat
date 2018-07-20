@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: SpriteRender
-  m_Shader: {fileID: 4800000, guid: d4c898207883dc84887a7bdbe878c50a, type: 3}
+  m_Shader: {fileID: 4800000, guid: 29485bd81fbff2e48b648e6739024e70, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -18,6 +18,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture_19E7E40E:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture_EDA04A1A:
+        m_Texture: {fileID: 2800000, guid: 2f16ce2fd99c4d04c84d815ce16910a7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -63,6 +71,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_16ED797E: 1.57
+    - Vector1_3BDA5503: 1
+    - Vector1_4ABBE3AA: 1
+    - Vector1_4B3485C9: 30
+    - Vector1_9964C2B2: 0.37
+    - Vector1_BF61C903: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -88,6 +102,7 @@ Material:
     - _VignetteYScale: -0.45
     - _ZWrite: 1
     m_Colors:
+    - Color_32E35229: {r: 0.23358631, g: 0, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _TintColor: {r: 0, g: 0, b: 0, a: 0}
