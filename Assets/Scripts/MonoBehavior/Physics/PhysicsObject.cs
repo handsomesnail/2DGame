@@ -48,8 +48,7 @@ public class PhysicsObject : TimeBacker
 
         Vector2 deltaPosition = velocity * Time.deltaTime;
 
-        Vector2 moveAlongGround =      
-            moveAlongGround = new Vector2(-groundNormal.y * GravityManager.Instance.direction.y, -groundNormal.x * GravityManager.Instance.direction.y);
+        Vector2 moveAlongGround = new Vector2(-groundNormal.y * GravityManager.Instance.direction.y, -groundNormal.x * GravityManager.Instance.direction.y);
    
 
         ///一般情况下 平行移动
