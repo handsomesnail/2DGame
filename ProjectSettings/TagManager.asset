@@ -48,3 +48,9 @@ TagManager:
   - name: Player
     uniqueID: 418008915
     locked: 0
+  - name: ForeGround
+    uniqueID: 817535249
+    locked: 0
+  - name: ForeEffect
+    uniqueID: 3794229681
+    locked: 0
