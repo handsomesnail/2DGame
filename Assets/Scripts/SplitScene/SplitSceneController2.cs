@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(RectTransform),typeof(CanvasGroup)),DisallowMultipleComponent]
-public class SplitSceneController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler {
+[RequireComponent(typeof(Renderer)), DisallowMultipleComponent]
+public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler {
+
 
     public bool allowExchange = true; //是否允许交换
     private Vector3 staticPos; //标准位置 用于交换
@@ -24,9 +25,6 @@ public class SplitSceneController : MonoBehaviour, IBeginDragHandler, IDragHandl
             return;
         }
         transform.SetAsLastSibling();
-        BeginDragLocalPos = Vector2.zero;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(eventData.pointerDrag.GetComponent<RectTransform>(),
-            eventData.position, eventData.pressEventCamera, out BeginDragLocalPos);
         canvasGroup.blocksRaycasts = false;
     }
 
@@ -48,13 +46,13 @@ public class SplitSceneController : MonoBehaviour, IBeginDragHandler, IDragHandl
         }
         GameObject dropGameObject = eventData.pointerCurrentRaycast.gameObject;
         if (dropGameObject != null) {
-            if (dropGameObject.CompareTag("SplitScene")&& dropGameObject!=this.gameObject) {
+            if (dropGameObject.CompareTag("SplitScene") && dropGameObject != this.gameObject) {
                 Vector3 tempPos = dropGameObject.transform.position;
-                SplitSceneController dropSplitSceneController = dropGameObject.GetComponent<SplitSceneController>();
-                Vector3 tempStaicPos = dropSplitSceneController.staticPos;
+                SplitSceneController2 dropSplitSceneController2 = dropGameObject.GetComponent<SplitSceneController2>();
+                Vector3 tempStaicPos = dropSplitSceneController2.staticPos;
 
                 dropGameObject.transform.position = staticPos;
-                dropSplitSceneController.staticPos = staticPos;
+                dropSplitSceneController2.staticPos = staticPos;
                 this.transform.position = tempStaicPos;
                 this.staticPos = tempStaicPos;
             }
@@ -67,4 +65,5 @@ public class SplitSceneController : MonoBehaviour, IBeginDragHandler, IDragHandl
     public void OnDrop(PointerEventData eventData) {
 
     }
+
 }
