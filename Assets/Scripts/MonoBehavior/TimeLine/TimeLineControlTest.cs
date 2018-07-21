@@ -3,29 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
 using UnityEngine.Playables;
+using DG.Tweening;
+using UnityEngine.Rendering.PostProcessing;
 
 public class TimeLineControlTest : MonoBehaviour
 {
-    public PlayableDirector startMove;
-    public PlayerInteract playerInteract;
+    public PlayableDirector director; 
+    public List<PlayableAsset> playableAssetsList = new List<PlayableAsset>();
 
-    private void Start()
+    public int index;
+
+    private void Update()
     {
-        startMove.played += DirectorStart;
-        startMove.stopped += DirectorEnd;
-        startMove.Play();
+        if (Input.GetKeyDown(KeyCode.Space))
+            PlayClip();
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            Pre();
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            Next();
     }
 
-    private void DirectorStart(PlayableDirector playableDirector)
+    private void PlayClip()
     {
-        Debug.Log("Start");
-        playerInteract.StartInteract();
+        director.Play();
     }
 
-    private void DirectorEnd(PlayableDirector playableDirector)
+    private void Next()
     {
-        Debug.Log("End");
-        playerInteract.EndInteract();
+        if (index == playableAssetsList.Count - 1)
+        {
+            index = 0;
+            director.playableAsset = playableAssetsList[index];
+        }
+        else
+        {
+            index++;
+            director.playableAsset = playableAssetsList[index];
+        }
     }
 
+    private void Pre()
+    {
+        if (index == 0)
+            index = playableAssetsList.Count - 1;
+        else
+            index--;
+        director.playableAsset = playableAssetsList[index];
+    }
 }
