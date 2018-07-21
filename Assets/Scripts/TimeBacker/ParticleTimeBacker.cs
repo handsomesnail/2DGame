@@ -65,9 +65,15 @@ public sealed class ParticleTimeBacker : TimeBacker {
 
     [ContextMenu("Stop")]
     public void Stop() {
+        Stop(true);
+    }
+
+    public void Stop(bool isDestroy) {
         isStopped = true;
         isPlaying = false;
-        Destroy(gameObject);
+        if (isDestroy)
+            Destroy(gameObject);
+        else gameObject.SetActive(false);
     }
 
 }
