@@ -6,6 +6,5 @@ public class LoadExamples : MonoBehaviour {
 
 	public void LoadExample(string level){
         UnityEngine.SceneManagement.SceneManager.LoadScene(level);
-
 	}
 }

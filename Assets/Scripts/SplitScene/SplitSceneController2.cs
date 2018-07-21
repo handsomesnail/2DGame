@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 //必须正交摄像机
+//需要背景图加上碰撞体
 [RequireComponent(typeof(Renderer),typeof(Collider2D)), DisallowMultipleComponent]
-public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler {
-
+public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler {
 
     public bool allowExchange = true; //是否允许交换
     private Vector3 staticPos; //标准位置 用于交换
@@ -73,4 +73,7 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
 
     }
 
+    public void OnPointerClick(PointerEventData eventData) {
+        //相机切到该场景的全景
+    }
 }

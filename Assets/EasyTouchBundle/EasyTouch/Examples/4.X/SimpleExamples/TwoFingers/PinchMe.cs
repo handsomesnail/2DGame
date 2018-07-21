@@ -36,7 +36,6 @@ public class PinchMe : MonoBehaviour {
 	
 	// At the 2 fingers touch beginning
 	private void On_TouchStart2Fingers( Gesture gesture){
-		
 		// Verification that the action on the object
 		if (gesture.pickedObject == gameObject ){		
 			// disable twist gesture recognize for a real pinch end
