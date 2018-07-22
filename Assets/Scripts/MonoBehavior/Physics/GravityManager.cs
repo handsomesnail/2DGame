@@ -15,20 +15,18 @@ public class GravityManager : MonoBehaviour
                 _instance = FindObjectOfType<GravityManager>();
             return _instance;
         }
-    }
-
-    public Vector2 gravity = new Vector2(0, -9.8f);    
+    }   
     
     public Vector2 direction
     {
         get
         {
-            return gravity.normalized;
+            return Physics2D.gravity.normalized;
         }
     }
 
     public void ChangeGravityDirection()
     {
-        Instance.gravity = -Instance.gravity;
+        Physics2D.gravity = -Physics2D.gravity;
     }
 }

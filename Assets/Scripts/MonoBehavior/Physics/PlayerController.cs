@@ -29,7 +29,7 @@ public class PlayerController : PhysicsObject
         if (Input.GetButtonDown("Jump") && grounded)
         {
             ///一般跳跃
-            velocity += jumpSpeed* (-GravityManager.Instance.direction);
+            velocity += -jumpSpeed*GravityManager.Instance.direction;
             //velocity += -GravityManager.gravity * jumpSpeed;
         }
         else if (Input.GetButtonUp("Jump"))

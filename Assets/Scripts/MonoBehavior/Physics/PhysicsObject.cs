@@ -41,14 +41,18 @@ public class PhysicsObject : TimeBacker
         targetVelocity = Vector2.zero;
         ComputeVelocity();
 
-        velocity += gravityModifier * GravityManager.Instance.gravity * Time.deltaTime;
+    }
+
+    private void FixedUpdate()
+    {        
+        velocity += gravityModifier * Physics2D.gravity* Time.deltaTime;
         velocity.x = targetVelocity.x;
 
         grounded = false;
 
         Vector2 deltaPosition = velocity * Time.deltaTime;
 
-        Vector2 moveAlongGround = new Vector2(-groundNormal.y * GravityManager.Instance.direction.y, -groundNormal.x * GravityManager.Instance.direction.y);
+        Vector2 moveAlongGround = new Vector2(-GravityManager.Instance.direction.y*groundNormal.y, GravityManager.Instance.direction.y*groundNormal.x );
    
 
         ///一般情况下 平行移动

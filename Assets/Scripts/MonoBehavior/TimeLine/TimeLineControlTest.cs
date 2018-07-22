@@ -15,7 +15,7 @@ public class TimeLineControlTest : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
             PlayClip();
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             Pre();

@@ -4,14 +4,22 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
 
-public abstract class TimeLineTrigger : MonoBehaviour
+public class TimeLineTrigger : MonoBehaviour
 {
     public PlayableDirector playableDirector;
+    public PlayableAsset playableAsset;
     public UnityEvent OnDirectorPlay;
     public UnityEvent OnDirectorStop;    
+    
+    public void  TriggerTimeline()
+    {
+        DirectorPlay();
+        DirectorStop();
+    }
 
     protected void DirectorPlay()
     {
+        playableDirector.playableAsset = playableAsset;
         playableDirector.Play();
         OnDirectorPlay.Invoke();
     }
@@ -21,8 +29,8 @@ public abstract class TimeLineTrigger : MonoBehaviour
         OnDirectorStop.Invoke();
     }
 
-    protected void DirectorStop(PlayableDirector director)
+    protected void DirectorStop()
     {
-        Invoke("DirectorStop",(float)director.duration);
+        Invoke("FinishDirector",(float)playableDirector.duration);
     }
 }

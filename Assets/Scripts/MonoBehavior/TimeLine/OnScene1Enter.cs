@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnScene1Enter : MonoBehaviour {
+public class OnScene1Enter : MonoBehaviour
+{
+    public TimeLineTrigger timeLine;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Start()
+    {
+        timeLine.TriggerTimeline();
+    }
 }

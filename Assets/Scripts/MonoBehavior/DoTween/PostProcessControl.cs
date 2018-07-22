@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Rendering.PostProcessing;
 
-public class TestScripts : MonoBehaviour
+public class PostProcessControl : MonoBehaviour
 {
     public PostProcessVolume postProcessVolume;
     public Bloom bloom;
@@ -13,25 +13,13 @@ public class TestScripts : MonoBehaviour
 
     private Sequence sequence;
 
-    private Tweener startTweener;
-    private Tweener endTweener;
     private void Awake()
     {
         postProcessVolume.profile.TryGetSettings(out bloom);
-
     }
 
-
-    
-    void Start()
+    public void StartBloomTween(int loopTimes)
     {
-        startTweener = DOTween.To(() => bloom.intensity.value, x => bloom.intensity.value = x, 10, 1).SetLoops(10,LoopType.Yoyo);
-        
-        startTweener.Play();
-    }
-
-    private void Update()
-    {
-          
+         DOTween.To(() => bloom.intensity.value, x => bloom.intensity.value = x, 10, 0.3f).SetLoops(loopTimes*2,LoopType.Yoyo);
     }
 }
