@@ -15,7 +15,7 @@ public class PostProcessControl : MonoBehaviour
 
     private void Awake()
     {
-        postProcessVolume.profile.TryGetSettings(out bloom);
+        //postProcessVolume.profile.TryGetSettings(out bloom);
     }
 
     public void StartBloomTween(int loopTimes)

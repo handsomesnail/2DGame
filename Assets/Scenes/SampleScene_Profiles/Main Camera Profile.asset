@@ -16,6 +16,8 @@ MonoBehaviour:
   - {fileID: 114159567605490972}
   - {fileID: 114509213950759238}
   - {fileID: 114421827878391734}
+  - {fileID: 114709562627888590}
+  - {fileID: 114410130821798162}
 --- !u!114 &114159567605490972
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1326,6 +1328,36 @@ MonoBehaviour:
       - 0.5
       - 0.5
       - 0.5
+--- !u!114 &114410130821798162
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0852cfe08c6fb634080d90785e2d3c76, type: 3}
+  m_Name: Water
+  m_EditorClassIdentifier: 
+  active: 0
+  enabled:
+    overrideState: 1
+    value: 1
+  tintColor:
+    overrideState: 1
+    value: {r: 0.7921569, g: 0.5801887, b: 0.5801887, a: 0.4117647}
+  magnitude:
+    overrideState: 1
+    value: 0.09
+  frequency:
+    overrideState: 1
+    value: 1
+  invWaveLength:
+    overrideState: 1
+    value: 10
+  speed:
+    overrideState: 1
+    value: 5
 --- !u!114 &114421827878391734
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1342,8 +1374,8 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   blend:
-    overrideState: 0
-    value: 0.5
+    overrideState: 1
+    value: 0
 --- !u!114 &114509213950759238
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1401,7 +1433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b924e2dad56384a8df2a1e111bb675, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -1433,3 +1465,31 @@ MonoBehaviour:
   opacity:
     overrideState: 1
     value: 1
+--- !u!114 &114709562627888590
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facb90922c9bd0649bbdc64902713884, type: 3}
+  m_Name: TextureSlice
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  noiseTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: eabe1bc32eab59441985ea485b14963c, type: 3}
+    defaultState: 1
+  cullScale:
+    overrideState: 1
+    value: 0
+  scrollSpeed:
+    overrideState: 1
+    value: 100
+  sampleScale:
+    overrideState: 1
+    value: 0.34

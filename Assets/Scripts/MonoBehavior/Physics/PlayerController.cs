@@ -11,12 +11,15 @@ public class PlayerController : PhysicsObject
 
     public float maxSpeed = 7f;
     public float jumpSpeed = 7f;
-    
+
+    private Animator animator;
+
     private bool isFacingRight = true;
 
     protected override void Awake()
     {
         base.Awake();
+        animator = GetComponent<Animator>();
         //spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -25,7 +28,12 @@ public class PlayerController : PhysicsObject
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
-        
+
+        if (move.x != 0.0f)
+            animator.SetBool("isWalking", true);
+        else
+            animator.SetBool("isWalking", false);
+
         if (Input.GetButtonDown("Jump") && grounded)
         {
             ///一般跳跃
@@ -55,6 +63,7 @@ public class PlayerController : PhysicsObject
         }
 
         targetVelocity = move * maxSpeed;
+        
 
     }
 
