@@ -74,6 +74,10 @@ public sealed class TimeBackManager : MonoBehaviour {
         managedTimeBackers.Remove(timeBacker);
     }
 
+    public void ReStart() {
+        currentFrame = 0;
+    }
+
     [ContextMenu("StartTimeBack")]
     /// <summary>开始倒流</summary>
     public void StartTimeBack() {
