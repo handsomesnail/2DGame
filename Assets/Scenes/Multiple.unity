@@ -211,9 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9417f732d46ca8244a794686b8213732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  processVolume: {fileID: 7165921}
-  startMove: {fileID: 7165920}
-  playerInteract: {fileID: 1326915496}
+  director: {fileID: 0}
+  playableAssetsList: []
+  index: 0
 --- !u!95 &7165919
 Animator:
   serializedVersion: 3
@@ -325,7 +325,13 @@ MonoBehaviour:
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
-  m_AfterStackBundles: []
+  m_AfterStackBundles:
+  - assemblyQualifiedName: Grayscale, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - assemblyQualifiedName: TextureSlice, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - assemblyQualifiedName: Water, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &14814251
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +867,11 @@ Prefab:
       propertyPath: m_Size.x
       value: 2.111309
       objectReference: {fileID: 0}
+    - target: {fileID: 95980616020405468, guid: 6b32bd164a8ffdf42a193911310ade74,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6918795fc91ec514e98ba1d4e64bb68a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b32bd164a8ffdf42a193911310ade74, type: 2}
   m_IsPrefabParent: 0
@@ -1182,7 +1193,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a80d6592d5fc1489b1b0fbad491f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: {x: 0, y: -9.8}
+  OnGravityChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnGravityChangeEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!4 &818441078
 Transform:
   m_ObjectHideFlags: 0
@@ -1218,8 +1238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b2960208667e1419358be8178eab96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  convertNextScene: 
-  loadNextScene: 
+  loadNextScene: TestScene
 --- !u!1 &820557822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,12 +1271,6 @@ Transform:
   m_Father: {fileID: 460145041}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1326915496 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114882496607618396, guid: 6b32bd164a8ffdf42a193911310ade74,
-    type: 2}
-  m_PrefabInternal: {fileID: 443667179}
-  m_Script: {fileID: 11500000, guid: ec09d97b89c37884489d2110b8ca0e10, type: 3}
 --- !u!1 &1520453535
 GameObject:
   m_ObjectHideFlags: 0

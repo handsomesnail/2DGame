@@ -26,7 +26,7 @@ public class Saver : MonoBehaviour, ISave {
             //将数据应用到Player
             //UI显示读档成功
         };
-        SceneManager.Instance.ConvertScene(saveData.LevelScene,loadCallback);
+        StartCoroutine(SceneManager.Instance.LoadSceneAsync(saveData.LevelScene,loadCallback));
     }
 
     /// <summary>存档</summary>
