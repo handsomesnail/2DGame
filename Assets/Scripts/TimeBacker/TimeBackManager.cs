@@ -8,9 +8,8 @@ using UnityEngine.UI;
 public sealed class TimeBackManager : MonoBehaviour {
 
     public const int MaxFrameCount = 300;//最多存300帧
-    private int currentFrame;//当前存储帧数
-
-    private int backSpeed;//倒流速度
+    public int currentFrame = 0;//当前存储帧数
+    public int backSpeed = 1;//倒流速度
 
     public static TimeBackManager Instance { private set; get; }
 
@@ -25,15 +24,13 @@ public sealed class TimeBackManager : MonoBehaviour {
         Instance = this;
         managedTimeBackers = new List<ITimeBacker>();
         IsBacking = false;
-        currentFrame = 0;
-        backSpeed = 1;
         DontDestroyOnLoad(this);
     }
 
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Q)) {
-            StartTimeBack(1);
+            StartTimeBack();
             return;
         }
         else if (Input.GetKeyDown(KeyCode.E)) {
@@ -77,19 +74,13 @@ public sealed class TimeBackManager : MonoBehaviour {
         managedTimeBackers.Remove(timeBacker);
     }
 
-    /// <summary>开始倒流(默认1倍速)</summary>
     [ContextMenu("StartTimeBack")]
-    public void StartTimeBack() {
-        StartTimeBack(1);
-    }
-
     /// <summary>开始倒流</summary>
-    public void StartTimeBack(int backSpeed) {
+    public void StartTimeBack() {
         if (IsBacking == true) {
             throw new Exception("当前已是倒流状态");
         }
         IsBacking = true;
-        this.backSpeed = backSpeed;
         foreach (var timeBacker in managedTimeBackers) {
 #if UNITY_EDITOR || _Safe
             try {
