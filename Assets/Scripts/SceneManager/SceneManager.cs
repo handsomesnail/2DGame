@@ -48,7 +48,7 @@ public class SceneManager : MonoBehaviour {
     /// <summary>切换到目标场景 </summary>
     public IEnumerator LoadSceneAsync(string sceneName) {
         yield return LoadSceneAsync(sceneName, ()=> {
-            Saver.Instance.Save(); //自动存档
+            //Saver.Instance.Save(); //自动存档
         });
     }
 
