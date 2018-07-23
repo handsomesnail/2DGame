@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(RectTransform),typeof(CanvasGroup)),DisallowMultipleComponent]
-public class SplitSceneController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler {
+public class SplitSceneController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler {
 
     public bool allowExchange = true; //是否允许交换
     private Vector3 staticPos; //标准位置 用于交换
@@ -67,4 +67,9 @@ public class SplitSceneController : MonoBehaviour, IBeginDragHandler, IDragHandl
     public void OnDrop(PointerEventData eventData) {
 
     }
+
+    public void OnPointerClick(PointerEventData eventData) {
+        //相机切到该场景的全景
+    }
+
 }

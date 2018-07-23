@@ -3,47 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(Renderer)), DisallowMultipleComponent]
-public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler {
-
+//必须正交摄像机
+//需要背景图加上碰撞体
+[RequireComponent(typeof(Renderer),typeof(Collider2D)), DisallowMultipleComponent]
+public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler {
 
     public bool allowExchange = true; //是否允许交换
     private Vector3 staticPos; //标准位置 用于交换
+    private float index;//距离相机距离(Z轴)
 
-    //拖拽模块
-    private CanvasGroup canvasGroup;
-    private Vector2 BeginDragLocalPos;
-    private Vector2 OnDragLocalPos;
+    private new Collider2D collider2D;
+    private new Renderer renderer;
+    private Vector3 BeginDragLocalPos;
+    private Vector3 OnDragLocalPos;
 
     private void Awake() {
-        canvasGroup = GetComponent<CanvasGroup>();
+        collider2D = GetComponent<Collider2D>();
+        renderer = GetComponent<Renderer>();
         staticPos = transform.position;
+        index = transform.position.z;
     }
 
     public void OnBeginDrag(PointerEventData eventData) {
         if (!allowExchange) {
             return;
         }
+        BeginDragLocalPos = eventData.pointerCurrentRaycast.worldPosition;
+        collider2D.enabled = false;
+        renderer.sortingOrder = 1;
+        Debug.Log(BeginDragLocalPos);
         transform.SetAsLastSibling();
-        canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData) {
         if (!allowExchange) {
             return;
         }
-        OnDragLocalPos = Vector2.zero;
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(eventData.pointerDrag.GetComponent<RectTransform>(),
-            eventData.position, eventData.pressEventCamera, out OnDragLocalPos)) {
-            Vector3 distance = new Vector3(OnDragLocalPos.x - BeginDragLocalPos.x, OnDragLocalPos.y - BeginDragLocalPos.y, 0);
-            transform.localPosition += distance;
+        if (eventData.pointerCurrentRaycast.worldPosition != Vector3.zero) {
+            Vector3 targetPos = staticPos + (eventData.pointerCurrentRaycast.worldPosition - BeginDragLocalPos);
+            transform.position = new Vector3(targetPos.x, targetPos.y, index);
         }
+        else transform.position = staticPos;
     }
 
     public void OnEndDrag(PointerEventData eventData) {
         if (!allowExchange) {
             return;
         }
+        collider2D.enabled = true;
+        renderer.sortingOrder = 0;
         GameObject dropGameObject = eventData.pointerCurrentRaycast.gameObject;
         if (dropGameObject != null) {
             if (dropGameObject.CompareTag("SplitScene") && dropGameObject != this.gameObject) {
@@ -59,11 +67,13 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
             else transform.position = staticPos;
         }
         else transform.position = staticPos;
-        canvasGroup.blocksRaycasts = true;
     }
 
     public void OnDrop(PointerEventData eventData) {
 
     }
 
+    public void OnPointerClick(PointerEventData eventData) {
+        //相机切到该场景的全景
+    }
 }
