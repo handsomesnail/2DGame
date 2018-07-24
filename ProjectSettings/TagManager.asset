@@ -55,3 +55,6 @@ TagManager:
   - name: ForeEffect
     uniqueID: 3794229681
     locked: 0
+  - name: DragedScene
+    uniqueID: 436163763
+    locked: 0
