@@ -19,11 +19,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture_EDA04A1A:
-        m_Texture: {fileID: 2800000, guid: 2f16ce2fd99c4d04c84d815ce16910a7, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_3BDA5503: 1
-    - Vector1_4ABBE3AA: 5
-    - Vector1_BF61C903: 5
+    - Vector1_3BDA5503: 1.56
+    - Vector1_4ABBE3AA: 4.96
+    - Vector1_BF61C903: 6.11
     m_Colors: []

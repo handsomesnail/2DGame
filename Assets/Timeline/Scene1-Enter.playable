@@ -14,6 +14,7 @@ MonoBehaviour:
   m_NextId: 0
   m_Tracks:
   - {fileID: 114001811391556978}
+  - {fileID: 114272565035520536}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -157,6 +158,25 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: TransformTweenClip
     m_Version: 1
+  m_Version: 1
+--- !u!114 &114272565035520536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4296d339e7fa94f950241169851228, type: 3}
+  m_Name: Scrolling Text Track
+  m_EditorClassIdentifier: 
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_AnimClip: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
   m_Version: 1
 --- !u!114 &114488510163708534
 MonoBehaviour:

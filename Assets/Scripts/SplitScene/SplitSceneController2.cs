@@ -51,6 +51,7 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
             return;
         }
         collider2D.enabled = true;
+<<<<<<< HEAD
         GameObject dropGameObject = eventData.pointerCurrentRaycast.gameObject;
         if (dropGameObject != null && dropGameObject.CompareTag("SplitScene") && dropGameObject != this.gameObject) {
             Vector3 tempPos = dropGameObject.transform.position;
@@ -76,6 +77,30 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
                 this.collider2D.enabled = true;
                 renderer.sortingOrder = 0;
             });
+=======
+        renderer.sortingOrder = 0;
+        GameObject dropGameObject = eventData.pointerCurrentRaycast.gameObject;
+        if (dropGameObject != null) {
+            if (dropGameObject.CompareTag("SplitScene") && dropGameObject != this.gameObject) {
+                Vector3 tempPos = dropGameObject.transform.position;
+                SplitSceneController2 dropSplitSceneController2 = dropGameObject.GetComponent<SplitSceneController2>();
+                Vector3 tempStaicPos = dropSplitSceneController2.staticPos;
+
+                dropSplitSceneController2.collider2D.enabled = false;
+                dropGameObject.transform.DOMove(staticPos,1.0f).SetEase(Ease.OutQuart).OnComplete(()=> {
+                    dropSplitSceneController2.staticPos = staticPos;
+                    dropSplitSceneController2.collider2D.enabled = true;
+                });
+
+                this.collider2D.enabled = false;
+                this.transform.DOMove(tempStaicPos, 1.0f).SetEase(Ease.OutQuart).OnComplete(() => {
+                    this.staticPos = tempStaicPos;
+                    this.collider2D.enabled = true;
+                });
+
+            }
+            else transform.position = staticPos;
+>>>>>>> a6d6d79a71859bacf4c9e615bd9b14b24709000d
         }
     }
 

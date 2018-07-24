@@ -16,7 +16,7 @@ public class PhysicsObject : TimeBacker
     
     protected Vector2 targetVelocity;
     protected bool grounded;
-    public Vector2 groundNormal;
+    protected Vector2 groundNormal;
     protected Rigidbody2D rb2d;
     protected Vector2 velocity;
     protected ContactFilter2D contactFilter;
@@ -25,7 +25,7 @@ public class PhysicsObject : TimeBacker
 
 
     protected const float minMoveDistance = 0.001f;
-    protected const float shellRadius = 0.01f;
+    protected const float shellRadius = 0.1f;
 
     protected override void Start()
     {
