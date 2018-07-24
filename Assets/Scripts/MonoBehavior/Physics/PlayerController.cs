@@ -30,12 +30,13 @@ public class PlayerController : PhysicsObject
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
-        move.y = Input.GetAxis("Vertical");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        if (move.y < 0)
+        if (verticalInput < 0)
             isCrouching = true;
         else
             isCrouching = false;
+
 
         if (Input.GetButtonDown("Jump") && grounded && !isCrouching)
         {
