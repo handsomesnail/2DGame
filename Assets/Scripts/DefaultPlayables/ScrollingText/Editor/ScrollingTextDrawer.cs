@@ -1,8 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Gamekit2D
-{
+
     [CustomPropertyDrawer(typeof(ScrollingTextBehaviour))]
     public class ScrollingTextDrawer : PropertyDrawer
     {
@@ -28,4 +27,3 @@ namespace Gamekit2D
             EditorGUI.PropertyField(singleFieldRect, holdDelayProp);
         }
     }
-}
