@@ -16,6 +16,8 @@ public class PlayerController : PhysicsObject
 
     private bool isFacingRight = true;
 
+    private bool isCrouching = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -28,13 +30,14 @@ public class PlayerController : PhysicsObject
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
+        move.y = Input.GetAxis("Vertical");
 
-        if (move.x != 0.0f)
-            animator.SetBool("isWalking", true);
+        if (move.y < 0)
+            isCrouching = true;
         else
-            animator.SetBool("isWalking", false);
+            isCrouching = false;
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButtonDown("Jump") && grounded && !isCrouching)
         {
             ///一般跳跃
             velocity += -jumpSpeed*GravityManager.Instance.direction;
@@ -44,7 +47,7 @@ public class PlayerController : PhysicsObject
         {
             ///一般引力缩减速度
             if (velocity.y > .0f)
-                velocity.y = velocity.y * .5f;
+                velocity.y = velocity.y * .01f;
         }
 
 
@@ -54,9 +57,12 @@ public class PlayerController : PhysicsObject
             isFacingRight = !isFacingRight;
         }
 
-        targetVelocity = move * maxSpeed;
-        
+        animator.SetFloat("HorizontalSpeed", Mathf.Abs(velocity.x) / maxSpeed);
+        animator.SetFloat("VerticalSpeed", velocity.y);
+        animator.SetBool("Grounded", grounded);
+        animator.SetBool("Crouching", isCrouching);
 
+        targetVelocity = move * maxSpeed;       
     }
 
     protected override void LateUpdate() {
