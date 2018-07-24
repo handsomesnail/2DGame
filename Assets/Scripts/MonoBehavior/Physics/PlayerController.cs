@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : PhysicsObject
 {
@@ -54,7 +55,12 @@ public class PlayerController : PhysicsObject
 
         if ((isFacingRight && move.x< -0.01f)||(!isFacingRight && move.x>0.01f))
         {
-            transform.localScale = new Vector3(-transform.localScale.x,transform.localScale.y,transform.localScale.z);
+            //transform.localScale = new Vector3(-transform.localScale.x,transform.localScale.y,transform.localScale.z);
+            var sp = GetComponent<SpriteRenderer>();
+            if (sp.flipX)
+                sp.flipX = false;
+            else
+                sp.flipX = true;
             isFacingRight = !isFacingRight;
         }
 
