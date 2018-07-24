@@ -81,9 +81,9 @@ public sealed class InputManager : MonoBehaviour {
     /// <summary>X轴输入</summary>
     public float AxisX {
         get {
+#if UNITY_STANDALONE && !_TOUCH
             if (!Interactable)
                 return 0;
-#if UNITY_STANDALONE && !_TOUCH
             return Input.GetAxis("Horizontal");
 #elif UNITY_ANDROID || UNITY_IPHONE || _TOUCH
             return MoveJoyStick.axisX.axisValue;
@@ -94,9 +94,9 @@ public sealed class InputManager : MonoBehaviour {
     /// <summary>Y轴输入</summary>
     public float AxisY {
         get {
+#if UNITY_STANDALONE && !_TOUCH
             if (!Interactable)
                 return 0;
-#if UNITY_STANDALONE && !_TOUCH
             return Input.GetAxis("Vertical");
 #elif UNITY_ANDROID || UNITY_IPHONE || _TOUCH
             return MoveJoyStick.axisY.axisValue;

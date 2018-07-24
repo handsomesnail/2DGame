@@ -4,8 +4,8 @@ using UnityEngine;
 
 public interface ISave  {
 
-    void Save();
+    //void Save();
 
-    void Apply();
+    //void Apply();
 
 }

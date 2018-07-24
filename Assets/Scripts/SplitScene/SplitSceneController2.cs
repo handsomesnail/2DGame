@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 //必须正交摄像机
 //需要背景图加上碰撞体
@@ -12,7 +13,7 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
     private Vector3 staticPos; //标准位置 用于交换
     private float index;//距离相机距离(Z轴)
 
-    private new Collider2D collider2D;
+    public new Collider2D collider2D;
     private new Renderer renderer;
     private Vector3 BeginDragLocalPos;
     private Vector3 OnDragLocalPos;
@@ -59,10 +60,18 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
                 SplitSceneController2 dropSplitSceneController2 = dropGameObject.GetComponent<SplitSceneController2>();
                 Vector3 tempStaicPos = dropSplitSceneController2.staticPos;
 
-                dropGameObject.transform.position = staticPos;
-                dropSplitSceneController2.staticPos = staticPos;
-                this.transform.position = tempStaicPos;
-                this.staticPos = tempStaicPos;
+                dropSplitSceneController2.collider2D.enabled = false;
+                dropGameObject.transform.DOMove(staticPos,1.0f).SetEase(Ease.OutQuart).OnComplete(()=> {
+                    dropSplitSceneController2.staticPos = staticPos;
+                    dropSplitSceneController2.collider2D.enabled = true;
+                });
+
+                this.collider2D.enabled = false;
+                this.transform.DOMove(tempStaicPos, 1.0f).SetEase(Ease.OutQuart).OnComplete(() => {
+                    this.staticPos = tempStaicPos;
+                    this.collider2D.enabled = true;
+                });
+
             }
             else transform.position = staticPos;
         }
@@ -75,5 +84,6 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
 
     public void OnPointerClick(PointerEventData eventData) {
         //相机切到该场景的全景
+        //关闭collider
     }
 }
