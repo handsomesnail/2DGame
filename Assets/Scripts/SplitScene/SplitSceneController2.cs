@@ -6,7 +6,7 @@ using DG.Tweening;
 
 //必须正交摄像机
 //需要背景图加上碰撞体
-[RequireComponent(typeof(Renderer),typeof(Collider2D)), DisallowMultipleComponent]
+[RequireComponent(typeof(Collider2D)), DisallowMultipleComponent]
 public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler {
 
     public bool allowExchange = true; //是否允许交换
@@ -14,15 +14,20 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
     private float index;//距离相机距离(Z轴)
 
     public new Collider2D collider2D;
-    private new Renderer renderer;
     private Vector3 BeginDragLocalPos;
     private Vector3 OnDragLocalPos;
 
+    private static int defaultLayerID = 0;
+    private static int sceneDragLayerId = 0;
+
     private void Awake() {
         collider2D = GetComponent<Collider2D>();
-        renderer = GetComponent<Renderer>();
         staticPos = transform.position;
         index = transform.position.z;
+        if(sceneDragLayerId == 0) {
+            sceneDragLayerId = SortingLayer.NameToID("DragedScene");
+            Debug.Log(sceneDragLayerId);
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData) {
@@ -31,8 +36,8 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
         }
         BeginDragLocalPos = eventData.pointerCurrentRaycast.worldPosition;
         collider2D.enabled = false;
-        renderer.sortingOrder = 1;
-        transform.SetAsLastSibling();
+        //transform.SetAsLastSibling();
+        IncreaseSortLayer(transform);
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -52,6 +57,7 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
         }
         collider2D.enabled = true;
         GameObject dropGameObject = eventData.pointerCurrentRaycast.gameObject;
+        Debug.Log(dropGameObject.name);
         if (dropGameObject != null && dropGameObject.CompareTag("SplitScene") && dropGameObject != this.gameObject) {
             Vector3 tempPos = dropGameObject.transform.position;
             SplitSceneController2 dropSplitSceneController2 = dropGameObject.GetComponent<SplitSceneController2>();
@@ -67,14 +73,14 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
             this.transform.DOMove(tempStaicPos, 1.0f).SetEase(Ease.OutQuart).OnComplete(() => {
                 this.staticPos = tempStaicPos;
                 this.collider2D.enabled = true;
-                renderer.sortingOrder = 0;
+                DecreaseSortLayer(transform);
             });
         }
         else {
             this.collider2D.enabled = false;
             this.transform.DOMove(staticPos, 1.0f).SetEase(Ease.OutQuart).OnComplete(() => {
                 this.collider2D.enabled = true;
-                renderer.sortingOrder = 0;
+                DecreaseSortLayer(transform);
             });
         }
     }
@@ -87,4 +93,28 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
         //相机切到该场景的全景
         //关闭collider
     }
+
+    /// <summary>改变某个物体及其所有子物体的渲染层级</summary>
+    private void ChangeSortLayer(Transform transform, bool isIncreased) {
+        Renderer renderer = transform.GetComponent<Renderer>();
+        if (renderer != null) {
+            if(isIncreased)
+                renderer.sortingLayerID = sceneDragLayerId;
+            else renderer.sortingLayerID = defaultLayerID;
+        }
+        foreach(Transform child in transform) {
+            ChangeSortLayer(child, isIncreased);
+        }
+    }
+
+    /// <summary>减小某个物体及其所有子物体的渲染层级</summary>
+    private void DecreaseSortLayer(Transform transform) {
+        ChangeSortLayer(transform, false);
+    }
+
+    /// <summary>提高某个物体及其所有子物体的渲染层级</summary>
+    private void IncreaseSortLayer(Transform transform) {
+        ChangeSortLayer(transform, true);
+    }
+
 }
