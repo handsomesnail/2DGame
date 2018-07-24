@@ -1,23 +1,15 @@
 ﻿using UnityEngine;
 
-[ExecuteInEditMode]
 public class SpriteOutline : MonoBehaviour
 {
-
-    public Color color = Color.white;
-
+    public Transform player;
+    public SpriteRenderer followSpriteRenderer;
     private SpriteRenderer spriteRenderer;
 
-    void OnEnable()
+    void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        UpdateOutline(true);
-    }
-
-    private void OnDisable()
-    {
-        UpdateOutline(false);
+        
     }
 
     // Update is called once per frame
@@ -28,10 +20,9 @@ public class SpriteOutline : MonoBehaviour
 
     void UpdateOutline(bool outline)
     {
-        MaterialPropertyBlock block = new MaterialPropertyBlock();
-        spriteRenderer.GetPropertyBlock(block);
-        block.SetFloat("_Outline", outline ? 1f : 0);
-        block.SetColor("_OutlineColor", color);
-        spriteRenderer.SetPropertyBlock(block);
+        transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
+        spriteRenderer.sprite = followSpriteRenderer.sprite;
+        spriteRenderer.flipX = followSpriteRenderer.flipX;
+        spriteRenderer.flipY = followSpriteRenderer.flipY == true?false:true;
     }
 }
