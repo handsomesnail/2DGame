@@ -8,8 +8,7 @@ public class SpriteOutline : MonoBehaviour
 
     void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();        
     }
 
     // Update is called once per frame
