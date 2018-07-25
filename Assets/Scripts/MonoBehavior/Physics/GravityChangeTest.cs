@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GravityChangeTest : MonoBehaviour
 {
-    public PlayerController playerController;
+    public TimeLineTrigger GravityChangeTrigger;
 
     void Update()
     {
