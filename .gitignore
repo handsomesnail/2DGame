@@ -12,7 +12,6 @@ x64/
 /Assets/AssetStoreTools*
 /Assets/Standard Assets/
 /AssetBundles/
-/Packages/
 /UWP/
 
 # Untracked Assets(generated assetbundles)
@@ -37,7 +36,3 @@ ExportedObj/
 *.pdb
 
 # Unity3D generated meta files
-<<<<<<< HEAD
-=======
-*.pidb.meta
->>>>>>> 16356605ae52e58ef90ee9a7c16fa5a5f3545a1f

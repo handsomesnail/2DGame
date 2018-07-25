@@ -13,6 +13,7 @@ public sealed class InputManager : MonoBehaviour {
     }
 
     private bool interactable;
+    int a = 0;
 
     [Header("触屏相关输入")]
     public bool JoystickControlJump = false; //摇杆控制跳和蹲
@@ -44,7 +45,7 @@ public sealed class InputManager : MonoBehaviour {
 
     private void Start() {
 #if UNITY_STANDALONE && !_TOUCH
-        easyTouch.gameObject.SetActive(false);
+        easyTouch.gameObject.SetActive(false); 
         MobileInputCanvas.SetActive(false);
 #elif UNITY_ANDROID || UNITY_IPHONE || _TOUCH
         easyTouch.gameObject.SetActive(true);

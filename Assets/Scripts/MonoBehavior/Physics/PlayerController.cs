@@ -10,7 +10,8 @@ public class PlayerController : PhysicsObject
         public bool flipX;
     }
 
-    public float maxSpeed = 7f;
+    public float crouchWalkSpeed = 5f;
+    public float runSpeed = 7f;
     public float jumpSpeed = 7f;
 
     private Animator animator;
@@ -37,8 +38,7 @@ public class PlayerController : PhysicsObject
             isCrouching = true;
         else
             isCrouching = false;
-
-
+        
         if (Input.GetButtonDown("Jump") && grounded && !isCrouching)
         {
             ///一般跳跃
@@ -64,12 +64,12 @@ public class PlayerController : PhysicsObject
             isFacingRight = !isFacingRight;
         }
 
-        animator.SetFloat("HorizontalSpeed", Mathf.Abs(velocity.x) / maxSpeed);
+        animator.SetFloat("HorizontalSpeed", Mathf.Abs(velocity.x) / runSpeed);
         animator.SetFloat("VerticalSpeed", velocity.y);
         animator.SetBool("Grounded", grounded);
         animator.SetBool("Crouching", isCrouching);
 
-        targetVelocity = move * maxSpeed;       
+        targetVelocity = isCrouching?move*crouchWalkSpeed:move * runSpeed;       
     }
 
     protected override void LateUpdate() {
