@@ -13,7 +13,6 @@ public sealed class InputManager : MonoBehaviour {
     }
 
     private bool interactable;
-    int a = 0;
 
     [Header("触屏相关输入")]
     public bool JoystickControlJump = false; //摇杆控制跳和蹲
@@ -55,6 +54,9 @@ public sealed class InputManager : MonoBehaviour {
             Debug.Log("响应开始分屏");
             Interactable = false;
             BackgroundRaycaster.enabled = true;
+            SplitSceneController2.splitScenes.ForEach((scene) => {
+                scene.collider2D.enabled = true;
+            });
         });//分屏时屏蔽操作
     }
 
