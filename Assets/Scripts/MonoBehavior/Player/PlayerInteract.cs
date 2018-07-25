@@ -5,28 +5,15 @@ using UnityEngine.Playables;
 
 public class PlayerInteract : MonoBehaviour
 {
-    public Animator animator;
-
-    public PlayerController playerController;
+    public SpriteRenderer playerSprite;
     
-    void Update ()
+    public void ChangePlayerSPFlipY()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-            animator.SetTrigger("Climb");            
-	}
-
-    public void ClimbEnd()
-    {
-        transform.position += new Vector3(1, 0, 0);
+        ChangeSpriteRenderFlipY(playerSprite);
     }
 
-    public void StartInteract()
+    private void ChangeSpriteRenderFlipY(SpriteRenderer spriteRenderer)
     {
-        playerController.enabled = false;
-    }
-
-    public void EndInteract()
-    {
-        playerController.enabled = true;
+        spriteRenderer.flipY = spriteRenderer.flipY == true ? false : true;
     }
 }

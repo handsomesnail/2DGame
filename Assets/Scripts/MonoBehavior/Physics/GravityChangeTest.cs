@@ -10,8 +10,7 @@ public class GravityChangeTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-          //  playerController.groundNormal= -playerController.groundNormal;
-            GravityManager.Instance.ChangeGravityDirection();
+            GravityChangeTrigger.TriggerTimeline();
         }
     }
 }
