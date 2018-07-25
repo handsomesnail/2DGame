@@ -19,6 +19,7 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
 
     private static int defaultLayerID = 0;
     private static int sceneDragLayerId = 0;
+    int a = 0;
 
     private void Awake() {
         collider2D = GetComponent<Collider2D>();
