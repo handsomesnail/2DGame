@@ -23,6 +23,7 @@ public sealed class InputManager : MonoBehaviour {
     public MobileButton CrouchButton;
     public MobileButton GravityButton;
     public MobileButton ItemButton;
+    public Collider2D BackgroundRaycaster;
 
     [Header("键鼠相关输入")]
     public KeyCode GravityKey; 
@@ -38,6 +39,7 @@ public sealed class InputManager : MonoBehaviour {
         interactable = true;
         GravityButton.onClick.AddListener(()=>OnClickGravity.Invoke());
         ItemButton.onClick.AddListener(() => OnClickItem.Invoke());
+        BackgroundRaycaster.enabled = false;
     }
 
     private void Start() {
@@ -51,6 +53,7 @@ public sealed class InputManager : MonoBehaviour {
         OnPinchScene.AddListener(() => {
             Debug.Log("响应开始分屏");
             Interactable = false;
+            BackgroundRaycaster.enabled = true;
         });//分屏时屏蔽操作
     }
 

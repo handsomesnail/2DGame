@@ -22,11 +22,11 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
 
     private void Awake() {
         collider2D = GetComponent<Collider2D>();
+        collider2D.enabled = false;
         staticPos = transform.position;
         index = transform.position.z;
         if(sceneDragLayerId == 0) {
             sceneDragLayerId = SortingLayer.NameToID("DragedScene");
-            Debug.Log(sceneDragLayerId);
         }
     }
 
@@ -57,7 +57,6 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
         }
         collider2D.enabled = true;
         GameObject dropGameObject = eventData.pointerCurrentRaycast.gameObject;
-        Debug.Log(dropGameObject.name);
         if (dropGameObject != null && dropGameObject.CompareTag("SplitScene") && dropGameObject != this.gameObject) {
             Vector3 tempPos = dropGameObject.transform.position;
             SplitSceneController2 dropSplitSceneController2 = dropGameObject.GetComponent<SplitSceneController2>();
@@ -90,6 +89,8 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
     }
 
     public void OnPointerClick(PointerEventData eventData) {
+        InputManager.Instance.BackgroundRaycaster.enabled = true;
+        collider2D.enabled = false;
         //相机切到该场景的全景
         //关闭collider
     }
