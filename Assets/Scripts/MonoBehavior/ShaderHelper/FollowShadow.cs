@@ -35,10 +35,15 @@ public class FollowShadow : MonoBehaviour
     {
         upSpriteRenderer.enabled = downSpriteRenderer.enabled = false;
     }
-
+    
     public void OnChangeGravity()
     {
         isUp = !isUp;
+       
+    }
+
+    public void ShowShadow()
+    {
         if (isUp)
         {
             upSpriteRenderer.enabled = false;
