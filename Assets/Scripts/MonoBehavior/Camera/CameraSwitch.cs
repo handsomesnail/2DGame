@@ -32,13 +32,10 @@ public class CameraSwitch : MonoBehaviour
         followCamera.Priority = wholeSceneCamera.Priority + 1;
         OnSwitchToFollowCamera.Invoke();
     }
-
-<<<<<<< HEAD
+    
     public void SetPlayerFollowCameraNotFollow()
     {
         followCamera.Follow = null;
     }
-=======
->>>>>>> 83fda353324b64d3013a6abcf0496943d9ab3624
 
 }

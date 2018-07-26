@@ -14,7 +14,6 @@ MonoBehaviour:
   m_NextId: 0
   m_Tracks:
   - {fileID: 114280983042770870}
-  - {fileID: 114433522416999950}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -228,22 +227,3 @@ MonoBehaviour:
   m_RemoveStartOffset: 1
   m_Version: 1
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
---- !u!114 &114433522416999950
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0282fd402247fd34eb165b280236e58a, type: 3}
-  m_Name: Time Dilation Track
-  m_EditorClassIdentifier: 
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_AnimClip: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips: []
-  m_Version: 1
