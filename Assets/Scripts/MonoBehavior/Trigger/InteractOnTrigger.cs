@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Collider2D))]
 public class InteractOnTrigger : MonoBehaviour
 {
     public UnityEvent OnTriggerEnter;

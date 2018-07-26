@@ -24,4 +24,9 @@ public class CameraSwitch : MonoBehaviour
         OnSwitchToFollowCamera.Invoke();
     }
 
+    public void SetPlayerFollowCameraNotFollow()
+    {
+        followCamera.Follow = null;
+    }
+
 }

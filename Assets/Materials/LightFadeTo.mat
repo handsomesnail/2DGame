@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: FadeTo
-  m_Shader: {fileID: 4800000, guid: c0c985ff8b0807b4eaa32192d2c98ba3, type: 3}
+  m_Name: LightFadeTo
+  m_Shader: {fileID: 4800000, guid: bd620e018f2f7a44091966daedb73602, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,11 +19,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture_1F0801D7:
-        m_Texture: {fileID: 2800000, guid: ca31c0b3ed808c8408c8c0c4cfdbe275, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5289eeb1c14ca6c408a684db31ee7e81, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture_39466348:
+        m_Texture: {fileID: 2800000, guid: c30c50cb21a229d47a8cd27b0fdc4f0d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture_BECE3834:
-        m_Texture: {fileID: 2800000, guid: 904b1cac8b5dd0a4d9bbcee1aeff0894, type: 3}
+        m_Texture: {fileID: 2800000, guid: c30c50cb21a229d47a8cd27b0fdc4f0d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture_EAAFAB08:
+        m_Texture: {fileID: 2800000, guid: 5289eeb1c14ca6c408a684db31ee7e81, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -67,7 +75,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_F8161654: 0.1
+    - Vector1_E780A257: 0
+    - Vector1_F8161654: 0.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
