@@ -6,8 +6,6 @@ using UnityEngine.Events;
 
 public class GravityManager : MonoBehaviour
 {
-    public UnityEvent OnGravityChange;
-    public UnityEvent OnGravityChangeEnd;
 
     private static GravityManager _instance;
 
@@ -32,6 +30,11 @@ public class GravityManager : MonoBehaviour
     public void ChangeGravityDirection()
     {
         Physics2D.gravity = -Physics2D.gravity;
-        OnGravityChange.Invoke();
     }
+
+    public void ChangeGravityDirectionTo(float gravity)
+    {
+        Physics2D.gravity = gravity*direction;
+    }
+
 }
