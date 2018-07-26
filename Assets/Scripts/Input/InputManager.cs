@@ -14,8 +14,11 @@ public sealed class InputManager : MonoBehaviour {
 
     private bool interactable;
 
+    private float lastAxisY = 0;
+    private float currentAxisY = 0;
+
     [Header("触屏相关输入")]
-    public bool JoystickControlJump = false; //摇杆控制跳和蹲
+    //public bool JoystickControlJump = false; //摇杆控制跳和蹲
     public EasyTouch easyTouch;
     public GameObject MobileInputCanvas;
     public ETCJoystick MoveJoyStick;
@@ -70,7 +73,13 @@ public sealed class InputManager : MonoBehaviour {
         else if (Input.GetKeyDown(ItemKey))
             OnClickItem.Invoke();
 
+#if UNITY_STANDALONE && !_TOUCH
+#elif UNITY_ANDROID || UNITY_IPHONE || _TOUCH
+        lastAxisY = currentAxisY;
+        currentAxisY = AxisY;
+#endif
     }
+
 
     /// <summary>是否接收输入</summary>
     public bool Interactable {
@@ -117,14 +126,20 @@ public sealed class InputManager : MonoBehaviour {
     /// <summary>当前跳跃键是否被按下</summary>
     public bool JumpKeyDown {
         get {
-            if (!Interactable)
-                return false;
 #if UNITY_STANDALONE && !_TOUCH
             return Input.GetButtonDown("Jump");
 #elif UNITY_ANDROID || UNITY_IPHONE || _TOUCH
-            if (JoystickControlJump)
-                return AxisY > 0.3f;
-            return JumpButton.Pressed;
+            return currentAxisY >= 0.3f & lastAxisY < 0.3f;
+#endif
+        }
+    }
+
+    public bool JumpKeyUp {
+        get {
+#if UNITY_STANDALONE && !_TOUCH
+            return Input.GetButtonUp("Jump");
+#elif UNITY_ANDROID || UNITY_IPHONE || _TOUCH
+            return currentAxisY < 0.3f & lastAxisY >= 0.3f;
 #endif
         }
     }
@@ -137,9 +152,7 @@ public sealed class InputManager : MonoBehaviour {
 #if UNITY_STANDALONE && !_TOUCH
             return Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
 #elif UNITY_ANDROID || UNITY_IPHONE || _TOUCH
-            if (JoystickControlJump)
-                return AxisY < -0.3f;
-            return CrouchButton.Pressed;
+            return AxisY < -0.3f;
 #endif
         }
     }
