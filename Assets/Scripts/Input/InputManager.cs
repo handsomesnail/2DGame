@@ -120,7 +120,7 @@ public sealed class InputManager : MonoBehaviour {
             if (!Interactable)
                 return false;
 #if UNITY_STANDALONE && !_TOUCH
-            return Input.GetButtonUp("Jump");
+            return Input.GetButtonDown("Jump");
 #elif UNITY_ANDROID || UNITY_IPHONE || _TOUCH
             if (JoystickControlJump)
                 return AxisY > 0.3f;

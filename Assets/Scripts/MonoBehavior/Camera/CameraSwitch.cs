@@ -6,6 +6,15 @@ using UnityEngine.Events;
 
 public class CameraSwitch : MonoBehaviour
 {
+
+    public static CameraSwitch Instance {
+        get; private set;
+    }
+
+    private void Awake() {
+        Instance = this;
+    }
+
     public CinemachineVirtualCamera wholeSceneCamera;
     public CinemachineVirtualCamera followCamera;
 
@@ -23,5 +32,6 @@ public class CameraSwitch : MonoBehaviour
         followCamera.Priority = wholeSceneCamera.Priority + 1;
         OnSwitchToFollowCamera.Invoke();
     }
+
 
 }

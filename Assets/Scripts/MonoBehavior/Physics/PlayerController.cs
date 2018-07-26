@@ -31,21 +31,18 @@ public class PlayerController : PhysicsObject
     {
         Vector2 move = Vector2.zero;
 
-        move.x = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        move.x = InputManager.Instance.AxisX;
+        float verticalInput = InputManager.Instance.AxisY;
 
-        if (verticalInput < 0)
-            isCrouching = true;
-        else
-            isCrouching = false;
-        
-        if (Input.GetButtonDown("Jump") && grounded && !isCrouching)
+        isCrouching = InputManager.Instance.CrouchKeyDown;
+
+        if (InputManager.Instance.JumpKeyDown && grounded && !isCrouching)
         {
             ///一般跳跃
             velocity += -jumpSpeed*GravityManager.Instance.direction;
             //velocity += -GravityManager.gravity * jumpSpeed;
         }
-        else if (Input.GetButtonUp("Jump"))
+        else if (!InputManager.Instance.JumpKeyDown)
         {
             ///一般引力缩减速度
             if (velocity.y > .0f)
