@@ -42,7 +42,7 @@ public class PlayerController : PhysicsObject
             velocity += -jumpSpeed*GravityManager.Instance.direction;
             //velocity += -GravityManager.gravity * jumpSpeed;
         }
-        else if (!InputManager.Instance.JumpKeyDown)
+        else if (InputManager.Instance.JumpKeyUp)
         {
             ///一般引力缩减速度
             if (velocity.y > .0f)
