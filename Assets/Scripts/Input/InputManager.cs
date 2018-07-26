@@ -50,6 +50,7 @@ public sealed class InputManager : MonoBehaviour {
         easyTouch.gameObject.SetActive(true);
         MobileInputCanvas.SetActive(true);
 #endif
+
         OnPinchScene.AddListener(() => {
             Debug.Log("响应开始分屏");
             Interactable = false;
@@ -81,6 +82,9 @@ public sealed class InputManager : MonoBehaviour {
             MoveJoyStick.activated = value;
             MobileInputCanvas.SetActive(value);
             easyTouch.gameObject.SetActive(value);
+#if UNITY_EDITOR
+            MoveJoyStick.enableKeySimulation = value;
+#endif
         }
     }
 
@@ -116,7 +120,7 @@ public sealed class InputManager : MonoBehaviour {
             if (!Interactable)
                 return false;
 #if UNITY_STANDALONE && !_TOUCH
-            return Input.GetButtonUp("Jump");
+            return Input.GetButtonDown("Jump");
 #elif UNITY_ANDROID || UNITY_IPHONE || _TOUCH
             if (JoystickControlJump)
                 return AxisY > 0.3f;

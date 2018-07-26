@@ -6,6 +6,15 @@ using UnityEngine.Events;
 
 public class CameraSwitch : MonoBehaviour
 {
+
+    public static CameraSwitch Instance {
+        get; private set;
+    }
+
+    private void Awake() {
+        Instance = this;
+    }
+
     public CinemachineVirtualCamera wholeSceneCamera;
     public CinemachineVirtualCamera followCamera;
 
@@ -24,9 +33,12 @@ public class CameraSwitch : MonoBehaviour
         OnSwitchToFollowCamera.Invoke();
     }
 
+<<<<<<< HEAD
     public void SetPlayerFollowCameraNotFollow()
     {
         followCamera.Follow = null;
     }
+=======
+>>>>>>> 83fda353324b64d3013a6abcf0496943d9ab3624
 
 }
