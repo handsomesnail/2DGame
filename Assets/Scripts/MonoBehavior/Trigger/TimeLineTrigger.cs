@@ -42,6 +42,7 @@ public class TimeLineTrigger : MonoBehaviour
 
     protected void FinishDirector()
     {
+        Debug.Log("Finish");
         OnDirectorStop.Invoke();
     }
 
