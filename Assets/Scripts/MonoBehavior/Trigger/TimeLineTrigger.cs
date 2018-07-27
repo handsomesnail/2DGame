@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
@@ -10,6 +11,7 @@ public enum TriggerType
     Always
 }
 
+[Serializable]
 public class TimeLineTrigger : MonoBehaviour
 {
     public PlayableDirector playableDirector;

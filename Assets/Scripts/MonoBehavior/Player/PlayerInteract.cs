@@ -9,6 +9,22 @@ public class PlayerInteract : MonoBehaviour
 
     private bool isFloating = false;
 
+    private InteractOnButtonPressTrigger interactOnButtonPress;
+
+    public void OnInteractButtonPress()
+    {
+        interactOnButtonPress.Trigger();
+    }
+
+    public void SetCurTrigger(InteractOnButtonPressTrigger trigger)
+    {
+        interactOnButtonPress = trigger;
+    }
+
+    #region 控制玩家贴图Y方向
+    /// <summary>
+    /// 控制玩家贴图的Y轴方向翻转
+    /// </summary>
     public void ChangePlayerSPFlipY()
     {
         ChangeSpriteRenderFlipY(playerSprite);
@@ -32,5 +48,5 @@ public class PlayerInteract : MonoBehaviour
     {
         isFloating = true;
     }
-
+    #endregion
 }
