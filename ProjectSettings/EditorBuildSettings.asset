@@ -6,21 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestScene.unity
-    guid: 88c279f588bc0ea48bdae6d5f3bfa6a0
+    path: Assets/Scenes/Bin/LoadingScene.unity
+    guid: a4bcea1d533f5954a811f41b861fca3d
+  - enabled: 1
+    path: Assets/Scenes/Bin/Zone1_Local.unity
+    guid: d18a095de2140fc44bbc24a27675c5f0
   - enabled: 1
     path: Assets/Epic Toon FX/Demo/Scenes/etfx_2ddemo.unity
     guid: 0ef9b490e5d6bad4ea1935d07d1c2ea9
-  - enabled: 1
-    path: Assets/Scenes/Multiple.unity
-    guid: 04abd1549e5d1e847bf04d07ffbca099
-  - enabled: 1
-    path: Assets/Scenes/GravityTest.unity
-    guid: cd69026ab92de9b41816676e13f56d48
-  - enabled: 1
-    path: Assets/Scenes/DeadZoneTest.unity
-    guid: 9519aac1995d543469e9092428a64841
-  - enabled: 1
-    path: Assets/Scenes/SingleCamera.unity
-    guid: 17440f59a94786e47b92a1943125c78e
   m_configObjects: {}
