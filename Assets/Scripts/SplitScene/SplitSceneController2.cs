@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.Events;
 
-//必须正交摄像机
+//最好正交摄像机
 //需要背景图加上碰撞体
 [RequireComponent(typeof(Collider2D)), DisallowMultipleComponent]
 public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler {
