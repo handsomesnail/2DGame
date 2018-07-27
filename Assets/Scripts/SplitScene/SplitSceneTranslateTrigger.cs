@@ -12,11 +12,14 @@ public class SplitSceneTranslateTrigger : MonoBehaviour {
 
     public Collider BoundingVolume;
 
+    public UnityEvent OnTranslated;
+
     private void OnTriggerEnter2D(Collider2D collider) {
         if (collider.gameObject.CompareTag("Player")) {
             collider.transform.position = targetPos.position;
             PlayerData.Instance.levelIndex = targetlevelIndex;
             CameraSwitch.Instance.followCamera.GetComponent<CinemachineConfiner>().m_BoundingVolume = BoundingVolume;
+            OnTranslated.Invoke();
         }
     }
 
