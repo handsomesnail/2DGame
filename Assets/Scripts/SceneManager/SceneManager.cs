@@ -34,19 +34,31 @@ public class SceneManager : MonoBehaviour {
         DontDestroyOnLoad(mask);
         Image maskImage = mask.transform.Find("Panel").GetComponent<Image>();
         maskImage.DOFade(1, 0.5f).SetEase(Ease.Linear).OnComplete(() => {
+            Debug.Log("开始激活新场景");
+            Debug.Log("IsDone:" + asyncOperation.isDone + " progress:" + asyncOperation.progress);
             asyncOperation.allowSceneActivation = true;
             Action LoadCallBack =() => maskImage.DOFade(0, 0.5f).SetEase(Ease.Linear).OnComplete(() => {
                 EndConvertScene(sceneName);
                 Destroy(mask);
                 completeCallback();
             });
-            StartCoroutine(WaitAsyncOperationDone(asyncOperation, LoadCallBack));
+            Action step1Callback =()=> StartCoroutine(WaitAsyncOperationDone(asyncOperation, LoadCallBack));
         });
-        yield return asyncOperation;
+        while (true) {
+            Debug.Log("IsDone:" + asyncOperation.isDone + " progress:" + asyncOperation.progress);
+            if (!asyncOperation.isDone && asyncOperation.progress<0.89) {
+                Debug.Log(asyncOperation.progress);
+                yield return asyncOperation;
+            }
+            else break;
+        }
+        Debug.Log("加载场景完成");
+        Debug.Log("IsDone:" + asyncOperation.isDone + " progress:" + asyncOperation.progress);
     }
 
     /// <summary>切换到目标场景 </summary>
     public IEnumerator LoadSceneAsync(string sceneName) {
+        Debug.Log("LoadSceneAsync:" + DateTime.Now.Millisecond);
         yield return LoadSceneAsync(sceneName, ()=> {
             //Saver.Instance.Save(); //自动存档
         });
@@ -54,10 +66,12 @@ public class SceneManager : MonoBehaviour {
 
     private IEnumerator WaitAsyncOperationDone(AsyncOperation asyncOperation, Action callBack) {
         while (!asyncOperation.isDone) {
+            Debug.Log("wait done:"+asyncOperation.progress);
             yield return new WaitForEndOfFrame();
         }
         callBack();
     }
+
 
 #if UNITY_EDITOR
     public string loadNextScene;
@@ -65,6 +79,23 @@ public class SceneManager : MonoBehaviour {
     public void LoadScene() {
         StartCoroutine(LoadSceneAsync(loadNextScene));
     }
+
+    public void TestNewLoad() {
+        StartCoroutine(Load());
+    }
+
+    public IEnumerator Load() {
+        //GameObject ConvertSceneMask = Resources.Load<GameObject>("ConvertSceneMask");
+        //GameObject mask = Instantiate(ConvertSceneMask);
+        //Image maskImage = mask.transform.Find("Panel").GetComponent<Image>();
+        //maskImage.DOFade(1, 0.5f).SetEase(Ease.Linear);
+        //etfx_2ddemo Zone1_Local NewScene TestScene
+        AsyncOperation asyncOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Zone1_Local", LoadSceneMode.Single);
+        asyncOperation.allowSceneActivation = false;
+        Debug.Log(asyncOperation.progress);
+        yield return new WaitForEndOfFrame();
+    }
+
 #endif
 
 }

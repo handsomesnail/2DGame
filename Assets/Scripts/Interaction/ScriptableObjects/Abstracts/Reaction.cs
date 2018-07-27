@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 // This is the base class for all Reactions.
 // There are arrays of inheriting Reactions on ReactionCollections.
