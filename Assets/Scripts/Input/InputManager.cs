@@ -157,12 +157,4 @@ public sealed class InputManager : MonoBehaviour {
         }
     }
 
-    public void GravityTrigger() {
-        OnClickGravity.Invoke();
-    }
-
-    public void ItemTrigger() {
-        OnClickItem.Invoke();
-    }
-
 }
