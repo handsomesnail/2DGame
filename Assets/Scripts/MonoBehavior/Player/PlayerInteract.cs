@@ -9,6 +9,31 @@ public class PlayerInteract : MonoBehaviour
 
     private bool isFloating = false;
 
+    private InteractOnButtonPress interactOBP;
+
+    public void SetInteractItem(InteractOnButtonPress interact)
+    {
+        interactOBP = interact;
+    }
+
+    public void InteractItem()
+    {
+        if (interactOBP == null)
+        {
+            Debug.Log("null interact Object");
+            return;
+        }
+        interactOBP.Interact();
+    }
+
+    public void EmptyInteract(InteractOnButtonPress interact)
+    {
+        if (interact != interactOBP)
+            return;
+        interactOBP = null;
+    }
+
+    #region 改变人物贴图
     public void ChangePlayerSPFlipY()
     {
         ChangeSpriteRenderFlipY(playerSprite);
@@ -32,5 +57,5 @@ public class PlayerInteract : MonoBehaviour
     {
         isFloating = true;
     }
-
+    #endregion
 }

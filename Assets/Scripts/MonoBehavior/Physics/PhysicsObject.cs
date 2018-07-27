@@ -126,4 +126,9 @@ public class PhysicsObject : TimeBacker
         rb2d.position = rb2d.position + move.normalized * distance;
     }
 
+    public void SetModifier(float scale)
+    {
+        gravityModifier = scale;
+    }
+
 }
