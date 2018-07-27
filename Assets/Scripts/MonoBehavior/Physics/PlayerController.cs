@@ -69,6 +69,23 @@ public class PlayerController : PhysicsObject
         targetVelocity = isCrouching?move*crouchWalkSpeed:move * runSpeed;       
     }
 
+    #region 愚蠢的设置是否蹲着
+    public void SetCrouchingTrue()
+    {
+        SetBool(isCrouching, true);
+    }
+
+    public void SetCrouchingFalse()
+    {
+        SetBool(isCrouching, false);
+    }
+
+    private void SetBool(bool re, bool ret)
+    {
+        re = ret;
+    }
+    #endregion
+
     protected override void LateUpdate() {
         _State _state = new _State() {
             isFacingRight = isFacingRight,
