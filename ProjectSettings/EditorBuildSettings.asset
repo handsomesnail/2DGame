@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Bin/LoadingScene.unity
-    guid: a4bcea1d533f5954a811f41b861fca3d
-  - enabled: 1
     path: "Assets/Scenes/Zone1 - \u526F\u672C.unity"
     guid: 88f068ecd0a10b14f89e9571eb296b0f
+  - enabled: 1
+    path: Assets/Scenes/Bin/LoadingScene.unity
+    guid: a4bcea1d533f5954a811f41b861fca3d
   - enabled: 1
     path: Assets/Epic Toon FX/Demo/Scenes/etfx_2ddemo.unity
     guid: 0ef9b490e5d6bad4ea1935d07d1c2ea9
