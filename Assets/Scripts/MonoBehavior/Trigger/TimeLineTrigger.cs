@@ -30,20 +30,31 @@ public class TimeLineTrigger : MonoBehaviour
 
         _alreadyTrigger = true;
 
-        DirectorPlay();
+        DirectorPlayCheck();
         DirectorStop();
     }
 
-    protected void DirectorPlay()
+
+    protected void DirectorPlayCheck()
     {
+        if (playableDirector.state == PlayState.Playing)
+            playableDirector.stopped += DirectorPlay;
+        else
+            DirectorPlay(playableDirector);
+    }
+
+    protected void DirectorPlay(PlayableDirector playableDirector)
+    {
+
         playableDirector.playableAsset = playableAsset;
         playableDirector.Play();
         OnDirectorPlay.Invoke();
     }
 
+    
+
     protected void FinishDirector()
     {
-        Debug.Log("Finish");
         OnDirectorStop.Invoke();
     }
 

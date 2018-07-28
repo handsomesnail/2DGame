@@ -6,7 +6,7 @@ public class GravityChangeTest : MonoBehaviour
 {
     public TimeLineTrigger GravityChangeTrigger;
 
-    private bool ifCanChange = false;
+    public bool ifCanChange = false;
 
     void Update()
     {
@@ -19,5 +19,11 @@ public class GravityChangeTest : MonoBehaviour
     public void SetCanChange()
     {
         ifCanChange = true;
+    }
+
+    public void ChangeGravity()
+    {
+        if (ifCanChange)
+            GravityChangeTrigger.TriggerTimeline();
     }
 }

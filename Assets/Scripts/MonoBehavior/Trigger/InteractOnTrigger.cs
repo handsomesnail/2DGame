@@ -11,28 +11,25 @@ public class InteractOnTrigger : MonoBehaviour
 
     public TriggerType triggerType = TriggerType.Once;
 
-    private bool already_Trigger = false;
+    public bool already_Trigger = false;
 
     public LayerMask triggerLayer;
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!enabled)
-            return;
-
+    {        
         if (already_Trigger && triggerType == TriggerType.Once)
             return;
+               
 
         if (triggerLayer.Contains(other.gameObject))
+        {
             ExeTriggerEnter(other);
-        already_Trigger = true;
+            already_Trigger = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
-    {
-        if (!enabled)
-            return;
-
+    {     
         if (triggerLayer.Contains(other.gameObject))
             ExeTriggerExit(other);
     }
