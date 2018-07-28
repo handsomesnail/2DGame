@@ -2515,7 +2515,7 @@ GameObject:
   - component: {fileID: 1045852084}
   - component: {fileID: 1045852085}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: NewSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2527,13 +2527,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1045852083}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.009012373, y: 0.02369029, z: 0.0045868643, w: 0.9996682}
+  m_LocalPosition: {x: 1, y: 0.65, z: 0.71}
+  m_LocalScale: {x: 1.93, y: 2.25, z: 1.66}
   m_Children: []
   m_Father: {fileID: 1371023580}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.02, y: 2.72, z: 0.55}
 --- !u!212 &1045852085
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2569,15 +2569,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9edb0f4e6715c8c49bf6a332e13f6380, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 60, y: 33.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
 --- !u!1 &1050935521
 GameObject:
