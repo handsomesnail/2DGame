@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public abstract class InteractOnButtonPress : MonoBehaviour
 {
     public virtual void Interact()
@@ -30,7 +31,6 @@ public abstract class InteractOnButtonPress : MonoBehaviour
             var playerInteract = collision.GetComponent<PlayerInteract>();
             if (playerInteract != null)
                 playerInteract.EmptyInteract(this);
-
             else
                 Debug.LogError("玩家无法进行道具交互");
         }

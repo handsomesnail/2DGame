@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public class PlayerController : PhysicsObject
 {
@@ -19,6 +20,8 @@ public class PlayerController : PhysicsObject
     private bool isFacingRight = true;
 
     private bool isCrouching = false;
+
+    public UnityEvent OnPlayerDead;
 
     protected override void Awake()
     {
@@ -69,22 +72,22 @@ public class PlayerController : PhysicsObject
         targetVelocity = isCrouching?move*crouchWalkSpeed:move * runSpeed;       
     }
 
-    #region 愚蠢的设置是否蹲着
-    public void SetCrouchingTrue()
+    public void DelayDead(float delay)
     {
-        SetBool(isCrouching, true);
+        Invoke("Dead", delay);
     }
 
-    public void SetCrouchingFalse()
+    public void Dead()
     {
-        SetBool(isCrouching, false);
+        animator.SetTrigger("Dead");
+        animator.SetInteger("DeadWay", UnityEngine.Random.Range(0, 1));
     }
 
-    private void SetBool(bool re, bool ret)
+    private void ExeDead()
     {
-        re = ret;
+        Debug.Log("死了 死了 死了 LoadScene(this)");
+        OnPlayerDead.Invoke();
     }
-    #endregion
 
     protected override void LateUpdate() {
         _State _state = new _State() {
