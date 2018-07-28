@@ -14,7 +14,6 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
     public bool allowExchange = true; //是否允许交换
     private Vector3 staticPos; //标准位置 用于交换
     private float index;//距离相机距离(Z轴)
-    public float outIndex = 10.0f;
 
     public new Collider2D collider2D;
     private new Renderer renderer;
@@ -52,9 +51,6 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
         collider2D.enabled = false;
         transform.SetAsLastSibling();
         ChangeSortLayer(transform, true);
-        transform.position += new Vector3(0, 0, -outIndex);
-        //transform.DOMoveZ(-5, 0.5f).SetEase(Ease.OutElastic).SetRelative(true);
-        index -= outIndex;
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -73,7 +69,6 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
             return;
         }
         collider2D.enabled = true;
-        index += outIndex;
         GameObject dropGameObject = eventData.pointerCurrentRaycast.gameObject;
         SplitSceneController2 dropSplitSceneController2 = dropGameObject.GetComponent<SplitSceneController2>();
         if (dropGameObject != null && dropGameObject.CompareTag("SplitScene") && dropGameObject != this.gameObject && dropSplitSceneController2.allowExchange) {

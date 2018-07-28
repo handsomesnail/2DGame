@@ -42,10 +42,15 @@ public class SceneManager : MonoBehaviour {
                 Destroy(mask);
                 completeCallback();
             });
-            StartCoroutine(WaitAsyncOperationDone(asyncOperation, LoadCallBack));
+            Action step1Callback =()=> StartCoroutine(WaitAsyncOperationDone(asyncOperation, LoadCallBack));
         });
-        while (!asyncOperation.isDone) {
-            yield return asyncOperation;
+        while (true) {
+            Debug.Log("IsDone:" + asyncOperation.isDone + " progress:" + asyncOperation.progress);
+            if (!asyncOperation.isDone && asyncOperation.progress<0.89) {
+                Debug.Log(asyncOperation.progress);
+                yield return asyncOperation;
+            }
+            else break;
         }
         Debug.Log("加载场景完成");
         Debug.Log("IsDone:" + asyncOperation.isDone + " progress:" + asyncOperation.progress);
@@ -61,11 +66,9 @@ public class SceneManager : MonoBehaviour {
 
     private IEnumerator WaitAsyncOperationDone(AsyncOperation asyncOperation, Action callBack) {
         while (!asyncOperation.isDone) {
-            Debug.Log("wait done");
-            Debug.Log("IsDone:" + asyncOperation.isDone + " progress:" + asyncOperation.progress);
+            Debug.Log("wait done:"+asyncOperation.progress);
             yield return new WaitForEndOfFrame();
         }
-        Debug.Log("IsDone:" + asyncOperation.isDone + " progress:" + asyncOperation.progress);
         callBack();
     }
 
