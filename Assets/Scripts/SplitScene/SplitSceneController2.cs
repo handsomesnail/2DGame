@@ -102,6 +102,9 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
     }
 
     public void OnPointerClick(PointerEventData eventData) {
+        if(PlayerData.Instance.levelIndex != levelIndex) {
+            return;
+        }
         Debug.Log("进入单屏");
         OnEnterIntoSpiltScene();
         OnCameraEnterScene.Invoke();
