@@ -13,6 +13,9 @@ public class SceneManager : MonoBehaviour {
     public event Action<string> StartConvertScene;
     public event Action<string> EndConvertScene;
 
+    private string sceneCache;
+    private AsyncOperation loadAsyncOperationCache;
+
     public static SceneManager Instance {
         private set; get;
     }
@@ -22,20 +25,37 @@ public class SceneManager : MonoBehaviour {
         StartConvertScene = (sceneName) => { };
         EndConvertScene = (sceneName) => { };
         DontDestroyOnLoad(this);
+        sceneCache = "NULL";
+    }
+
+    //可以避免切换的第一个波峰 在预加载场景之前先预加载资源
+    /// <summary>预加载场景 </summary>
+    public IEnumerator LoadSceneAsync(string sceneName) {
+        sceneCache = sceneName;
+        loadAsyncOperationCache = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+        loadAsyncOperationCache.allowSceneActivation = false;
+        while (!loadAsyncOperationCache.isDone) {
+            yield return loadAsyncOperationCache;
+        }
     }
 
     /// <summary>切换到目标场景 </summary>
-    public IEnumerator LoadSceneAsync(string sceneName, Action completeCallback) {
-        AsyncOperation asyncOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
-        asyncOperation.allowSceneActivation = false;
+    public IEnumerator ConvertSceneAsync(string sceneName, Action completeCallback) {
+        bool isCached = !string.IsNullOrEmpty(sceneCache) && sceneName == sceneCache;
+        AsyncOperation asyncOperation;
+        if (isCached) {
+            asyncOperation = loadAsyncOperationCache;
+        }
+        else {
+            asyncOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+            asyncOperation.allowSceneActivation = false;
+        }
         StartConvertScene(sceneName);
         GameObject ConvertSceneMask = Resources.Load<GameObject>("ConvertSceneMask");
         GameObject mask = Instantiate(ConvertSceneMask);
         DontDestroyOnLoad(mask);
         Image maskImage = mask.transform.Find("Panel").GetComponent<Image>();
         maskImage.DOFade(1, 0.5f).SetEase(Ease.Linear).OnComplete(() => {
-            Debug.Log("开始激活新场景");
-            Debug.Log("IsDone:" + asyncOperation.isDone + " progress:" + asyncOperation.progress);
             asyncOperation.allowSceneActivation = true;
             Action LoadCallBack =() => maskImage.DOFade(0, 0.5f).SetEase(Ease.Linear).OnComplete(() => {
                 EndConvertScene(sceneName);
@@ -44,28 +64,22 @@ public class SceneManager : MonoBehaviour {
             });
             StartCoroutine(WaitAsyncOperationDone(asyncOperation, LoadCallBack));
         });
-        while (!asyncOperation.isDone) {
+        while (!isCached && !asyncOperation.isDone) {
             yield return asyncOperation;
         }
-        Debug.Log("加载场景完成");
-        Debug.Log("IsDone:" + asyncOperation.isDone + " progress:" + asyncOperation.progress);
     }
 
     /// <summary>切换到目标场景 </summary>
-    public IEnumerator LoadSceneAsync(string sceneName) {
-        Debug.Log("LoadSceneAsync:" + DateTime.Now.Millisecond);
-        yield return LoadSceneAsync(sceneName, ()=> {
+    public IEnumerator ConvertSceneAsync(string sceneName) {
+        yield return ConvertSceneAsync(sceneName, ()=> {
             //Saver.Instance.Save(); //自动存档
         });
     }
 
     private IEnumerator WaitAsyncOperationDone(AsyncOperation asyncOperation, Action callBack) {
         while (!asyncOperation.isDone) {
-            Debug.Log("wait done");
-            Debug.Log("IsDone:" + asyncOperation.isDone + " progress:" + asyncOperation.progress);
             yield return new WaitForEndOfFrame();
         }
-        Debug.Log("IsDone:" + asyncOperation.isDone + " progress:" + asyncOperation.progress);
         callBack();
     }
 
@@ -74,23 +88,7 @@ public class SceneManager : MonoBehaviour {
     public string loadNextScene;
     [ContextMenu("LoadScene")]
     public void LoadScene() {
-        StartCoroutine(LoadSceneAsync(loadNextScene));
-    }
-
-    public void TestNewLoad() {
-        StartCoroutine(Load());
-    }
-
-    public IEnumerator Load() {
-        //GameObject ConvertSceneMask = Resources.Load<GameObject>("ConvertSceneMask");
-        //GameObject mask = Instantiate(ConvertSceneMask);
-        //Image maskImage = mask.transform.Find("Panel").GetComponent<Image>();
-        //maskImage.DOFade(1, 0.5f).SetEase(Ease.Linear);
-        //etfx_2ddemo Zone1_Local NewScene TestScene
-        AsyncOperation asyncOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Zone1_Local", LoadSceneMode.Single);
-        asyncOperation.allowSceneActivation = false;
-        Debug.Log(asyncOperation.progress);
-        yield return new WaitForEndOfFrame();
+        StartCoroutine(ConvertSceneAsync(loadNextScene));
     }
 
 #endif

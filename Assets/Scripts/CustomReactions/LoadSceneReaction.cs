@@ -8,7 +8,7 @@ public class LoadSceneReaction : Reaction {
     public string sceneName;
 
     protected override void ImmediateReaction(MonoBehaviour monoBehaviour) {
-        monoBehaviour.StartCoroutine(SceneManager.Instance.LoadSceneAsync(sceneName));
+        monoBehaviour.StartCoroutine(SceneManager.Instance.ConvertSceneAsync(sceneName));
     }
 
     protected override void ImmediateReaction() {
