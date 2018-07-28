@@ -555,6 +555,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  triggerType: 0
   triggerLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -682,7 +683,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4509161145947970, guid: 4d0f0ccffb9f3eb46af3db9660873b62, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 15.34
+      value: 15.540001
       objectReference: {fileID: 0}
     - target: {fileID: 4509161145947970, guid: 4d0f0ccffb9f3eb46af3db9660873b62, type: 2}
       propertyPath: m_LocalPosition.z
@@ -730,6 +731,10 @@ Prefab:
         type: 2}
       propertyPath: m_Size.y
       value: 2.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509161145947970, guid: 4d0f0ccffb9f3eb46af3db9660873b62, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.5375013
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d0f0ccffb9f3eb46af3db9660873b62, type: 2}
@@ -1831,7 +1836,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4509161145947970, guid: 4d0f0ccffb9f3eb46af3db9660873b62, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 15.34
+      value: 15.54
       objectReference: {fileID: 0}
     - target: {fileID: 4509161145947970, guid: 4d0f0ccffb9f3eb46af3db9660873b62, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1879,6 +1884,10 @@ Prefab:
         type: 2}
       propertyPath: m_Size.y
       value: 2.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509161145947970, guid: 4d0f0ccffb9f3eb46af3db9660873b62, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.5375013
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d0f0ccffb9f3eb46af3db9660873b62, type: 2}
@@ -3413,6 +3422,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  triggerType: 0
   triggerLayer:
     serializedVersion: 2
     m_Bits: 8192
@@ -5714,6 +5724,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  triggerType: 0
   triggerLayer:
     serializedVersion: 2
     m_Bits: 1024
