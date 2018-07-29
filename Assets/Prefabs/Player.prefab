@@ -152,8 +152,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 1
-  maxSpeed: 15
+  crouchWalkSpeed: 5
+  runSpeed: 7
   jumpSpeed: 10
+  OnPlayerDead:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114882496607618396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,8 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec09d97b89c37884489d2110b8ca0e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  playerController: {fileID: 114680039290019866}
+  playerSprite: {fileID: 0}
 --- !u!212 &212642629912773536
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -207,7 +212,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.53125, y: 9.9375}
+  m_Size: {x: 7.8125, y: 11.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -37,15 +37,11 @@ public class TimeLineTrigger : MonoBehaviour
 
     protected void DirectorPlayCheck()
     {
-        if (playableDirector.state == PlayState.Playing)
-            playableDirector.stopped += DirectorPlay;
-        else
-            DirectorPlay(playableDirector);
+        DirectorPlay(playableDirector);
     }
 
     protected void DirectorPlay(PlayableDirector playableDirector)
     {
-
         playableDirector.playableAsset = playableAsset;
         playableDirector.Play();
         OnDirectorPlay.Invoke();
