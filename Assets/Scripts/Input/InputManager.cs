@@ -58,6 +58,8 @@ public sealed class InputManager : MonoBehaviour {
             Debug.Log("响应开始分屏");
             Interactable = false;
             BackgroundRaycaster.enabled = true;
+            PlayerData.Player.GetComponent<PlayerController>().enabled = false;
+            PlayerData.Player.GetComponent<Collider2D>().enabled = false;
             SplitSceneController2.splitScenes.ForEach((scene) => {
                 scene.collider2D.enabled = true;
             });

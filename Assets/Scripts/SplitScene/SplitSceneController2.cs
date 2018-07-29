@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.Events;
+using System;
+using Cinemachine;
 
 //最好正交摄像机
 //需要背景图加上碰撞体
@@ -11,10 +13,12 @@ using UnityEngine.Events;
 public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler {
 
     public int levelIndex;
+    public int levelPosIndex;
     public bool allowExchange = true; //是否允许交换
     private Vector3 staticPos; //标准位置 用于交换
     private float index;//距离相机距离(Z轴)
     public GameObject outline;
+    public Collider DeadZone;
 
     public new Collider2D collider2D;
     private new Renderer renderer;
@@ -50,7 +54,7 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
         }
         BeginDragLocalPos = eventData.pointerCurrentRaycast.worldPosition;
         collider2D.enabled = false;
-        transform.SetAsLastSibling();
+        //transform.SetAsLastSibling();
         ChangeSortLayer(transform, true);
         transform.position += new Vector3(0, 0, -5);
         index -= 5;
@@ -81,6 +85,7 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
             Vector3 tempPos = dropGameObject.transform.position;
             Vector3 tempStaicPos = dropSplitSceneController2.staticPos;
 
+            //互换标准位置
             dropSplitSceneController2.collider2D.enabled = false;
             dropGameObject.transform.DOMove(staticPos, 1.0f).SetEase(Ease.OutQuart).OnComplete(() => {
                 dropSplitSceneController2.staticPos = staticPos;
@@ -93,6 +98,11 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
                 this.collider2D.enabled = true;
                 ChangeSortLayer(transform, false);
             });
+
+            //互换位置索引和DeadZone
+            Utility.Exchange(ref this.levelPosIndex, ref dropSplitSceneController2.levelPosIndex);
+            Utility.Exchange(ref this.DeadZone, ref dropSplitSceneController2.DeadZone);
+
         }
         else {
             this.collider2D.enabled = false;
@@ -108,12 +118,17 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
     }
 
     public void OnPointerClick(PointerEventData eventData) {
+        if (eventData.dragging)
+            return;
         if(PlayerData.Instance.levelIndex != levelIndex) {
             return;
         }
+        CameraSwitch.Instance.followCamera.GetComponent<CinemachineConfiner>().m_BoundingVolume = DeadZone;
         Debug.Log("进入单屏");
         OnEnterIntoSpiltScene();
         OnCameraEnterScene.Invoke();
+        PlayerData.Player.GetComponent<PlayerController>().enabled = true;
+        PlayerData.Player.GetComponent<Collider2D>().enabled = true;
     }
 
     public void OnEnterIntoSpiltScene() {
@@ -140,7 +155,12 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
             transform.gameObject.layer = sceneDragLayerIndex;
         }
         else {
-            transform.gameObject.layer = object_Layer_dic[transform];
+            try {
+                transform.gameObject.layer = object_Layer_dic[transform];
+            }
+            catch (Exception) {
+                Debug.LogError(transform.gameObject.name);
+            }
             object_Layer_dic.Remove(transform);
         }
         foreach (Transform child in transform) {
