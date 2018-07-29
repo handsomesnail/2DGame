@@ -24,7 +24,7 @@ public sealed class TimeBackManager : MonoBehaviour {
         Instance = this;
         managedTimeBackers = new List<ITimeBacker>();
         IsBacking = false;
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
 

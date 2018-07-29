@@ -129,16 +129,23 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
         }
     }
 
+    private Dictionary<Transform, int> object_Layer_dic = new Dictionary<Transform, int>();
     private void ChangeSortLayer(Transform transform, bool increased) {
         Renderer renderer = transform.GetComponent<Renderer>();
         if (renderer != null)
             renderer.sortingLayerID = increased ? sceneDragSortLayerId : defaultSortLayerID;
-        transform.gameObject.layer = increased ? sceneDragLayerIndex : defaultLayerIndex;
-        foreach(Transform child in transform) {
+
+        if (increased) {
+            object_Layer_dic[transform] = transform.gameObject.layer;
+            transform.gameObject.layer = sceneDragLayerIndex;
+        }
+        else {
+            transform.gameObject.layer = object_Layer_dic[transform];
+            object_Layer_dic.Remove(transform);
+        }
+        foreach (Transform child in transform) {
             ChangeSortLayer(child, increased);
         }
     }
-
-
 
 }

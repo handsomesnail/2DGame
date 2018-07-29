@@ -83,7 +83,7 @@ public class PlayerController : PhysicsObject
         animator.SetInteger("DeadWay", UnityEngine.Random.Range(0, 1));
     }
 
-    private void ExeDead()
+    public void ExeDead()
     {
         Debug.Log("死了 死了 死了 LoadScene(this)");
         OnPlayerDead.Invoke();
