@@ -21,7 +21,7 @@ public class PlayerController : PhysicsObject
 
     private bool isCrouching = false;
 
-    private bool isTransitionDown = true;
+    private bool isTransition = false;
 
     public UnityEvent OnPlayerDead;
 
@@ -41,7 +41,7 @@ public class PlayerController : PhysicsObject
 
         isCrouching = InputManager.Instance.CrouchKeyDown;
 
-        if (!isTransitionDown)
+        if (isTransition)
             move.x = 0.0f;
 
         if (InputManager.Instance.JumpKeyDown && grounded && !isCrouching)
@@ -96,12 +96,12 @@ public class PlayerController : PhysicsObject
 
     public void BeginTransition()
     {
-        isTransitionDown = false;
+        isTransition = true;
     }
 
     public void EndTransition()
     {
-        isTransitionDown = true;
+        isTransition = false;
     }
 
     protected override void LateUpdate() {
