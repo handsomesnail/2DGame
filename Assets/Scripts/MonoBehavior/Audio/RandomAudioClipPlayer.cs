@@ -7,7 +7,7 @@ public class RandomAudioClipPlayer : MonoBehaviour
 {
     public AudioClip[] clips;
 
-    public bool randomizePitch = false;
+    public bool randomizePitch = true;
     public float pitchRange = 0.2f;
 
     protected AudioSource _source;
@@ -17,7 +17,7 @@ public class RandomAudioClipPlayer : MonoBehaviour
         _source = GetComponent<AudioSource>();
     }
 
-    public void PlayerRandomSound()
+    public void PlayRandomSound()
     {
         AudioClip[] source = clips;
 

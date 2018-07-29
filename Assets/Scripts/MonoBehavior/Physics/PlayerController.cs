@@ -65,7 +65,7 @@ public class PlayerController : PhysicsObject
         }
 
         animator.SetFloat("HorizontalSpeed", Mathf.Abs(velocity.x) / runSpeed);
-        animator.SetFloat("VerticalSpeed", velocity.y);
+        animator.SetFloat("VerticalSpeed", -velocity.y*GravityManager.Instance.direction.y);
         animator.SetBool("Grounded", grounded);
         animator.SetBool("Crouching", isCrouching);
 
