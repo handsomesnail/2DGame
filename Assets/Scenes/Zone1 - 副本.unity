@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 32071811}
   - component: {fileID: 32071812}
   - component: {fileID: 32071813}
+  - component: {fileID: 32071815}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -137,7 +138,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 32071810}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.099998474, z: -58.655}
+  m_LocalPosition: {x: 0.06, y: 1, z: -60.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 882995270}
@@ -192,6 +193,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Range: 0.5
+--- !u!95 &32071815
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 32071810}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &56774791
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +342,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1395149975279280, guid: 85f43324a5559dd498da2b81265a983a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114298907608512424, guid: 85f43324a5559dd498da2b81265a983a,
         type: 2}
@@ -970,7 +989,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1395149975279280, guid: 85f43324a5559dd498da2b81265a983a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85f43324a5559dd498da2b81265a983a, type: 2}
@@ -1899,7 +1918,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1395149975279280, guid: 85f43324a5559dd498da2b81265a983a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85f43324a5559dd498da2b81265a983a, type: 2}
@@ -5107,7 +5126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1395149975279280, guid: 85f43324a5559dd498da2b81265a983a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114298907608512424, guid: 85f43324a5559dd498da2b81265a983a,
         type: 2}
@@ -8732,6 +8751,16 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 114194568413974014, guid: a9192e2f1c2869a439648f2f3561381a, type: 2}
     value: {fileID: 1855978387}
+  - key: {fileID: 0}
+    value: {fileID: 32071810}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 32071810}
+  - key: {fileID: 114708694097934992, guid: a9192e2f1c2869a439648f2f3561381a, type: 2}
+    value: {fileID: 32071810}
+  - key: {fileID: 0}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - ee905c9f2090b1245b5c24a2165b6005: {fileID: 32071812}
@@ -8741,8 +8770,10 @@ PlayableDirector:
     - 88f517373aea8114aa5f498407d9e68c: {fileID: 2010785763}
     - be06374f73ed1a94d815b7b20e5679a8: {fileID: 1532766481}
     - 4bae699a9eb40194ca17208ca5c9276c: {fileID: 542543666}
+    - 25c3eca43dad59a4c81d4dce6333807b: {fileID: 0}
     - 439af8eefd994a843b81d7eef8e17611: {fileID: 2010785763}
     - 6138a7ee0576bba4799a8ab825af71c7: {fileID: 542543666}
+    - 989a402b1089ca9468e3d773c8cda238: {fileID: 32071812}
 --- !u!114 &2108318361
 MonoBehaviour:
   m_ObjectHideFlags: 0
