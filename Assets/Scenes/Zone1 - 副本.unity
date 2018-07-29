@@ -2637,6 +2637,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1661630237}
+        m_MethodName: set_Interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnDirectorStop:
@@ -2686,9 +2697,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1340868180}
-        m_MethodName: Play
-        m_Mode: 1
+      - m_Target: {fileID: 1661630237}
+        m_MethodName: set_Interactable
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3454,7 +3465,7 @@ Prefab:
     - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
         type: 2}
       propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4109165521364898, guid: 6b32bd164a8ffdf42a193911310ade74, type: 2}
       propertyPath: m_LocalPosition.x
@@ -3636,7 +3647,7 @@ Prefab:
     - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
         type: 2}
       propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
         type: 2}
@@ -3647,11 +3658,11 @@ Prefab:
         type: 2}
       propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 972942320}
+      objectReference: {fileID: 978807179}
     - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
         type: 2}
       propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: set_enabled
+      value: ChangePlayerSPFlipY
       objectReference: {fileID: 0}
     - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
         type: 2}
@@ -3697,6 +3708,11 @@ Prefab:
         type: 2}
       propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
+        type: 2}
+      propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b32bd164a8ffdf42a193911310ade74, type: 2}
@@ -5172,7 +5188,7 @@ MonoBehaviour:
   musicAudioClip: {fileID: 8300000, guid: 9ea83091fd1a4444aa4cd94e41bd8193, type: 3}
   musicOutput: {fileID: 243784686031320330, guid: 083c420831e50eb4b9c267c5689bee66,
     type: 2}
-  musicPlayOnAwake: 0
+  musicPlayOnAwake: 1
   musicVolume: 1
   ambientAudioClip: {fileID: 0}
   ambientOutput: {fileID: 0}
@@ -6085,7 +6101,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1532766480}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -53.787853, y: 2.167223, z: 0.33950195}
+  m_LocalPosition: {x: -53.787853, y: 2.09, z: 0.33950195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2010785763}
@@ -6904,7 +6920,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4620296001649866, guid: e28b06a8bde7f2b438efa0d411086625, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -34.13089
+      value: -54
       objectReference: {fileID: 0}
     - target: {fileID: 4620296001649866, guid: e28b06a8bde7f2b438efa0d411086625, type: 2}
       propertyPath: m_LocalPosition.y
@@ -7775,7 +7791,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243784686031320330, guid: 083c420831e50eb4b9c267c5689bee66,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 60554f568029c1348a7da28fd10061d1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6fde75777971db94ab8dc7339ff65bb5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.642
   m_Pitch: 0.36
