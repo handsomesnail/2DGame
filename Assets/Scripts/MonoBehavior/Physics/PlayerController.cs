@@ -21,6 +21,8 @@ public class PlayerController : PhysicsObject
 
     private bool isCrouching = false;
 
+    private bool isTransitionDown = true;
+
     public UnityEvent OnPlayerDead;
 
     protected override void Awake()
@@ -38,6 +40,9 @@ public class PlayerController : PhysicsObject
         float verticalInput = InputManager.Instance.AxisY;
 
         isCrouching = InputManager.Instance.CrouchKeyDown;
+
+        if (!isTransitionDown)
+            move.x = 0.0f;
 
         if (InputManager.Instance.JumpKeyDown && grounded && !isCrouching)
         {
@@ -64,10 +69,6 @@ public class PlayerController : PhysicsObject
             isFacingRight = !isFacingRight;
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Crouch") || animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Crouchup"))
-        {
-            velocity.x = 0;
-        }
 
         animator.SetFloat("HorizontalSpeed", Mathf.Abs(velocity.x) / runSpeed);
         animator.SetFloat("VerticalSpeed", -velocity.y*GravityManager.Instance.direction.y);
@@ -91,6 +92,16 @@ public class PlayerController : PhysicsObject
     {
         Debug.Log("死了 死了 死了 LoadScene(this)");
         OnPlayerDead.Invoke();
+    }
+
+    public void BeginTransition()
+    {
+        isTransitionDown = false;
+    }
+
+    public void EndTransition()
+    {
+        isTransitionDown = true;
     }
 
     protected override void LateUpdate() {
