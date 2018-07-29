@@ -22,6 +22,7 @@ public sealed class InputManager : MonoBehaviour {
     public EasyTouch easyTouch;
     public GameObject MobileInputCanvas;
     public ETCJoystick MoveJoyStick;
+    public GameObject Buttons;
     public MobileButton JumpButton;
     public MobileButton CrouchButton;
     public MobileButton GravityButton;

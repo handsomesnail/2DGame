@@ -21,8 +21,17 @@ public class Pincher : MonoBehaviour {
         EasyTouch.On_PinchOut += On_PinchOut;
         EasyTouch.On_PinchEnd += On_PinchEnd;
         OnPinchIn.AddListener(() => {
-            if (InputManager.Instance.Interactable) {
-                InputManager.Instance.OnPinchScene.Invoke();
+            if (!InputManager.Instance.Interactable) {
+                return;
+            }
+            //当前关有引导并且[引导1]未完成并且当前不是引导1阶段 跳过
+            if(Guide1Control.Instance != null && !Guide1Control.Instance.Completed && !Guide1Control.Instance.isGuiding) {
+                Debug.Log("跳过1");
+                return;
+            }
+            InputManager.Instance.OnPinchScene.Invoke();
+            if (Guide1Control.Instance != null && Guide1Control.Instance.isGuiding && !Guide1Control.Instance.Completed) {
+                Guide1Control.Instance.Complete();
             }
         });
     }
