@@ -50,6 +50,7 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
 
     public void OnBeginDrag(PointerEventData eventData) {
         if (!allowExchange) {
+            outline.GetComponent<SpriteRenderer>().DOFade(0.8f, 0.5f);
             return;
         }
         BeginDragLocalPos = eventData.pointerCurrentRaycast.worldPosition;
@@ -74,6 +75,7 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
 
     public void OnEndDrag(PointerEventData eventData) {
         if (!allowExchange) {
+            outline.GetComponent<SpriteRenderer>().DOFade(0f, 0.5f);
             return;
         }
         collider2D.enabled = true;
