@@ -64,6 +64,11 @@ public class PlayerController : PhysicsObject
             isFacingRight = !isFacingRight;
         }
 
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Crouch") || animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Crouchup"))
+        {
+            velocity.x = 0;
+        }
+
         animator.SetFloat("HorizontalSpeed", Mathf.Abs(velocity.x) / runSpeed);
         animator.SetFloat("VerticalSpeed", -velocity.y*GravityManager.Instance.direction.y);
         animator.SetBool("Grounded", grounded);
@@ -80,7 +85,6 @@ public class PlayerController : PhysicsObject
     public void Dead()
     {
         animator.SetTrigger("Dead");
-        animator.SetInteger("DeadWay", UnityEngine.Random.Range(0, 1));
     }
 
     public void ExeDead()
