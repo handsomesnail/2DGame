@@ -1152,6 +1152,18 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 61565438980279238, guid: 4d0f0ccffb9f3eb46af3db9660873b62,
     type: 2}
   m_PrefabInternal: {fileID: 1414380760}
+--- !u!114 &461471109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31183c52b7f8f06499ea2d227ceda6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: "Zone1 - \u526F\u672C"
 --- !u!1 &472128411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1943,6 +1955,48 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 61, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &752065987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 752065988}
+  - component: {fileID: 752065989}
+  m_Layer: 10
+  m_Name: Reaction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &752065988
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752065987}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1938233452}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &752065989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752065987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c78ebea41b45b734d90506f0fabd571e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reactions:
+  - {fileID: 461471109}
 --- !u!1001 &757506925
 Prefab:
   m_ObjectHideFlags: 0
@@ -2563,7 +2617,7 @@ Prefab:
     - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
         type: 2}
       propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4109165521364898, guid: 6b32bd164a8ffdf42a193911310ade74, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2710,6 +2764,31 @@ Prefab:
     - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
         type: 2}
       propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
+        type: 2}
+      propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
+        type: 2}
+      propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
+        type: 2}
+      propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 752065989}
+    - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
+        type: 2}
+      propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: React
+      objectReference: {fileID: 0}
+    - target: {fileID: 114680039290019866, guid: 6b32bd164a8ffdf42a193911310ade74,
+        type: 2}
+      propertyPath: OnPlayerDead.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5512,7 +5591,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4620296001649866, guid: e28b06a8bde7f2b438efa0d411086625, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -34.13089
+      value: -53
       objectReference: {fileID: 0}
     - target: {fileID: 4620296001649866, guid: e28b06a8bde7f2b438efa0d411086625, type: 2}
       propertyPath: m_LocalPosition.y
