@@ -44,7 +44,7 @@ public class PlayerController : PhysicsObject
         if (isTransition)
             move.x = 0.0f;
 
-        if (InputManager.Instance.JumpKeyDown && grounded && !isCrouching)
+        if (InputManager.Instance.JumpKeyDown && grounded && !isCrouching && !isTransition)
         {
             ///一般跳跃
             velocity += -jumpSpeed*GravityManager.Instance.direction;
