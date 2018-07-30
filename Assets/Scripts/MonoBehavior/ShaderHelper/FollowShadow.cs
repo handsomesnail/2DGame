@@ -39,7 +39,6 @@ public class FollowShadow : MonoBehaviour
     public void OnChangeGravity()
     {
         isUp = !isUp;
-       
     }
 
     public void ShowShadow()
