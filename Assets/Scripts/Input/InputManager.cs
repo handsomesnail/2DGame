@@ -47,14 +47,13 @@ public sealed class InputManager : MonoBehaviour {
     }
 
     private void Start() {
-#if UNITY_STANDALONE && !_TOUCH
-        easyTouch.gameObject.SetActive(false); 
-        MobileInputCanvas.SetActive(false);
-#elif UNITY_ANDROID || UNITY_IPHONE || _TOUCH
-        easyTouch.gameObject.SetActive(true);
-        MobileInputCanvas.SetActive(true);
-#endif
-
+//#if UNITY_STANDALONE && !_TOUCH
+//        easyTouch.gameObject.SetActive(false); 
+//        MobileInputCanvas.SetActive(false);
+//#elif UNITY_ANDROID || UNITY_IPHONE || _TOUCH
+//        easyTouch.gameObject.SetActive(true);
+//        MobileInputCanvas.SetActive(true);
+//#endif
         OnPinchScene.AddListener(() => {
             Debug.Log("响应开始分屏");
             Interactable = false;
