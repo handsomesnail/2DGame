@@ -53,6 +53,11 @@ public class PlayerInteract : MonoBehaviour
         isFloating = false;
     }
 
+    public void FlipY()
+    {
+        playerSprite.flipY = playerSprite.flipY ? false : true;
+    }
+
     public void SetisFloating()
     {
         isFloating = true;
