@@ -21,6 +21,7 @@ public class SceneManager : MonoBehaviour {
     }
 
     private void Awake() {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Instance = this;
         StartConvertScene = (sceneName) => { };
         EndConvertScene = (sceneName) => { };
