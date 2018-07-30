@@ -15,6 +15,7 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
     public int levelIndex;
     public int levelPosIndex;
     public bool allowExchange = true; //是否允许交换
+    public bool allowEnter = true; //点击进入是否激活
     private Vector3 staticPos; //标准位置 用于交换
     private float index;//距离相机距离(Z轴)
     public GameObject outline;
@@ -122,6 +123,9 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
     public void OnPointerClick(PointerEventData eventData) {
         if (eventData.dragging)
             return;
+        if (!allowEnter) {
+            return;
+        }
         if(PlayerData.Instance.levelIndex != levelIndex) {
             return;
         }

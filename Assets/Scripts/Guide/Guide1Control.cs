@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Guide1Control : MonoBehaviour {
@@ -30,6 +31,7 @@ public class Guide1Control : MonoBehaviour {
         Completed = true;
         guideCanvas.SetActive(false);
         Guide2Control.Instance.InvokeGuide();
+        SplitSceneController2.splitScenes.Where((scene) => scene.gameObject.name == "Level-1").First().allowEnter = false;
     }
     
 }
