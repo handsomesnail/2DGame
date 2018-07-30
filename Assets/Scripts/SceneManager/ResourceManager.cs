@@ -27,8 +27,10 @@ public static class ResourceManager {
     }
 
     public static IEnumerator LoadAsync(string name, string tag) {
-        if (resourceCache.ContainsKey(name))
+        if (resourceCache.ContainsKey(name)) {
             Debug.LogWarning("重复加载" + name);
+            yield return null;
+        }
 
         ResourceRequest resourceRequest = Resources.LoadAsync(name);
         while (!resourceRequest.isDone) {

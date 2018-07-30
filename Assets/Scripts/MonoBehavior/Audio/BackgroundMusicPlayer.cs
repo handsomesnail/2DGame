@@ -69,7 +69,7 @@ namespace Gamekit2D
 
             s_Instance = this;
 
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
 
             m_MusicAudioSource = gameObject.AddComponent<AudioSource>();
             m_MusicAudioSource.clip = musicAudioClip;
