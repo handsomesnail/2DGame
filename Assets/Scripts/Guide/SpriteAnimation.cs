@@ -9,8 +9,9 @@ using UnityEngine.Events;
 public class SpriteAnimation : MonoBehaviour {
 
     public float speed = 1;
-    public Vector3 moveDistance;
+    public Transform moveTarget;
     public float betweenloopDuration = 0;//每个循环的间隔
+    public float afterLoopDelay = 0;
     public int loopTimes = -1;
     public Sprite[] sprites;
     private Image image;
@@ -33,7 +34,7 @@ public class SpriteAnimation : MonoBehaviour {
             index++;
             if(index % sprites.Length == 0) {
                 if (betweenloopDuration != 0) {
-                    transform.DOLocalMove(moveDistance, betweenloopDuration).SetEase(Ease.OutQuart).SetRelative(true).OnComplete(() => {
+                    transform.DOMove(moveTarget.position-transform.position, betweenloopDuration).SetEase(Ease.OutQuart).SetRelative(true).OnComplete(() => {
                         transform.localPosition = oriLocalPos;
                     });
                     yield return new WaitForSeconds(betweenloopDuration);
