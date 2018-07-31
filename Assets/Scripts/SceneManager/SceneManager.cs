@@ -22,11 +22,13 @@ public class SceneManager : MonoBehaviour {
 
     private void Awake() {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        if (Instance != null)
+            return;
         Instance = this;
         StartConvertScene = (sceneName) => { };
         EndConvertScene = (sceneName) => { };
         DontDestroyOnLoad(this);
-        sceneCache = "NULL";
+        sceneCache = null;
     }
 
     //可以避免切换的第一个波峰 在预加载场景之前先预加载资源
@@ -45,9 +47,13 @@ public class SceneManager : MonoBehaviour {
         bool isCached = !string.IsNullOrEmpty(sceneCache) && sceneName == sceneCache;
         AsyncOperation asyncOperation;
         if (isCached) {
+            Debug.Log("已缓存 直接进入场景");
             asyncOperation = loadAsyncOperationCache;
+            loadAsyncOperationCache = null;
+            sceneCache = null;
         }
         else {
+            Debug.Log("加载场景");
             asyncOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             asyncOperation.allowSceneActivation = false;
         }

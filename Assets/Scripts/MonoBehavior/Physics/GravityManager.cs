@@ -9,6 +9,8 @@ public class GravityManager : MonoBehaviour
 
     private static GravityManager _instance;
 
+    public static Vector2 oriGravity = Vector2.zero;
+
     public static GravityManager Instance
     {
         get
@@ -17,8 +19,15 @@ public class GravityManager : MonoBehaviour
                 _instance = FindObjectOfType<GravityManager>();
             return _instance;
         }
-    }   
-    
+    }
+
+    private void Awake() {
+        if(oriGravity == Vector2.zero) {
+            oriGravity = Physics2D.gravity;
+        }
+        Physics2D.gravity = oriGravity;
+    }
+
     public Vector2 direction
     {
         get

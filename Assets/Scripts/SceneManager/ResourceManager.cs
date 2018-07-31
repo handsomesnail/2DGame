@@ -31,13 +31,15 @@ public static class ResourceManager {
             Debug.LogWarning("重复加载" + name);
             yield return null;
         }
+        else {
 
-        ResourceRequest resourceRequest = Resources.LoadAsync(name);
-        while (!resourceRequest.isDone) {
-            yield return resourceRequest;
+            ResourceRequest resourceRequest = Resources.LoadAsync(name);
+            while (!resourceRequest.isDone) {
+                yield return resourceRequest;
+            }
+            Object asset = resourceRequest.asset;
+            resourceCache.Add(name, new AssetData(tag, name, asset));
         }
-        Object asset = resourceRequest.asset;
-        resourceCache.Add(name, new AssetData(tag, name, asset));
     }
 
     public static void UnLoadAsset(string name) {
