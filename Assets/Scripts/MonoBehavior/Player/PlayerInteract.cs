@@ -7,7 +7,7 @@ public class PlayerInteract : MonoBehaviour
 {
     public SpriteRenderer playerSprite;
 
-    private bool isFloating = false;
+    private bool isFloating = false;    
 
     private InteractOnButtonPress interactOBP;
 

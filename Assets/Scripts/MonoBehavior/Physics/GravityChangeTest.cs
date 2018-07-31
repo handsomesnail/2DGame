@@ -21,6 +21,11 @@ public class GravityChangeTest : MonoBehaviour
         ifCanChange = true;
     }
 
+    public void SetCantChange()
+    {
+        ifCanChange = false;
+    }
+
     public void ChangeGravity()
     {
         if (ifCanChange)

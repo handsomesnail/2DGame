@@ -15,6 +15,8 @@ public class PlayerController : PhysicsObject
     public float runSpeed = 7f;
     public float jumpSpeed = 7f;
 
+    public GravityChangeTest gravityChange;
+
     private Animator animator;
 
     private bool isFacingRight = true;
@@ -57,6 +59,10 @@ public class PlayerController : PhysicsObject
                 velocity.y = velocity.y * .01f;
         }
 
+        if (grounded)
+            gravityChange.SetCanChange();
+        else
+            gravityChange.SetCantChange();
 
         if ((isFacingRight && move.x< -0.01f)||(!isFacingRight && move.x>0.01f))
         {
