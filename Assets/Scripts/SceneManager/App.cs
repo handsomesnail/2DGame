@@ -7,15 +7,23 @@ using UnityEngine.Events;
 public class App : MonoBehaviour {
 
     public UnityEvent OnGameEntrance;
-   
 
     public static App Instance {
         private set; get;
     }
 
     private void Awake() {
-        Instance = this;
-        DontDestroyOnLoad(this);
+        if (Instance == null) {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else {
+            Destroy(this.gameObject);
+        }
+
+        if (GetComponent<SceneManager>() == null) {
+            gameObject.AddComponent<SceneManager>();
+        }
     }
 
     private void Start() {
