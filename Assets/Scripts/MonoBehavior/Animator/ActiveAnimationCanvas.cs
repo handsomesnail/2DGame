@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityItemCanvas : MonoBehaviour
+public class ActiveAnimationCanvas : MonoBehaviour
 {
     public Animator canvasAnimator;
 
