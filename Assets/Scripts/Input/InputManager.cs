@@ -16,6 +16,7 @@ public sealed class InputManager : MonoBehaviour {
 
     private float lastAxisY = 0;
     private float currentAxisY = 0;
+    public bool isSplit = false;//当前是否是分屏状态
 
     [Header("触屏相关输入")]
     //public bool JoystickControlJump = false; //摇杆控制跳和蹲
@@ -63,6 +64,7 @@ public sealed class InputManager : MonoBehaviour {
             SplitSceneController2.splitScenes.ForEach((scene) => {
                 scene.collider2D.enabled = true;
             });
+            isSplit = true;
         });//分屏时屏蔽操作
     }
 

@@ -10,7 +10,14 @@ public class MainSceneManager : MonoBehaviour {
     public float duration = 1.0f;
     public GameObject logo;
     public GameObject start;
-   
+
+    public GameObject lightObject;
+    public GameObject darkObejct;
+
+    [SerializeField]
+    private AudioSource audioSource;
+
+    public float[] distance;
 
     private void Awake() {
         
@@ -54,6 +61,46 @@ public class MainSceneManager : MonoBehaviour {
         foreach(Transform child in transform) {
             FadeIn(child, duration);
         }
+    }
+
+    [ContextMenu("StartGame")]
+    public void StartGame() {
+        StartCoroutine(Bling());
+    }
+
+    private IEnumerator Bling() {
+        //放音乐
+        yield return new WaitForSeconds(distance[0]);
+        audioSource.Play();
+        SwitchLight(true);
+        yield return new WaitForSeconds(distance[1]);
+        SwitchLight(false);
+        yield return new WaitForSeconds(distance[2]);
+
+        SwitchLight(true);
+        yield return new WaitForSeconds(distance[3]);
+        SwitchLight(false);
+        yield return new WaitForSeconds(distance[4]);
+
+        SwitchLight(true);
+        yield return new WaitForSeconds(distance[5]);
+        SwitchLight(false);
+        yield return new WaitForSeconds(distance[6]);
+
+        SwitchLight(true);
+        yield return new WaitForSeconds(distance[7]);
+        SwitchLight(false);
+        yield return new WaitForSeconds(distance[8]);
+
+        SwitchLight(true);
+        yield return new WaitForSeconds(distance[9]);
+
+        StartCoroutine(SceneManager.Instance.ConvertSceneAsync("Zone1 - 副本"));
+    }
+
+    private void SwitchLight(bool isLight) {
+        lightObject.SetActive(isLight);
+        darkObejct.SetActive(!isLight);
     }
 
 }

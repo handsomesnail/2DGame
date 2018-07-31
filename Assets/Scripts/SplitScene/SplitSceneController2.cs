@@ -92,25 +92,30 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
             dropSplitSceneController2.collider2D.enabled = false;
             dropGameObject.transform.DOMove(staticPos, 1.0f).SetEase(Ease.OutQuart).OnComplete(() => {
                 dropSplitSceneController2.staticPos = staticPos;
-                dropSplitSceneController2.collider2D.enabled = true;
+                if (InputManager.Instance.isSplit) {
+                    dropSplitSceneController2.collider2D.enabled = true;
+                }
             });
 
             this.collider2D.enabled = false;
             this.transform.DOMove(tempStaicPos, 1.0f).SetEase(Ease.OutQuart).OnComplete(() => {
                 this.staticPos = tempStaicPos;
-                this.collider2D.enabled = true;
                 ChangeSortLayer(transform, false);
+                if (InputManager.Instance.isSplit) {
+                    this.collider2D.enabled = true;
+                }
             });
 
             //互换位置索引和DeadZone
             Utility.Exchange(ref this.levelPosIndex, ref dropSplitSceneController2.levelPosIndex);
             Utility.Exchange(ref this.DeadZone, ref dropSplitSceneController2.DeadZone);
-
         }
         else {
             this.collider2D.enabled = false;
             this.transform.DOMove(staticPos, 1.0f).SetEase(Ease.OutQuart).OnComplete(() => {
-                this.collider2D.enabled = true;
+                if (InputManager.Instance.isSplit) {
+                    this.collider2D.enabled = true;
+                }
                 ChangeSortLayer(transform, false);
             });
         }
@@ -129,6 +134,7 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
         if(PlayerData.Instance.levelIndex != levelIndex) {
             return;
         }
+        InputManager.Instance.isSplit = false;
         CameraSwitch.Instance.followCamera.GetComponent<CinemachineConfiner>().m_BoundingVolume = DeadZone;
         Debug.Log("进入单屏");
         OnEnterIntoSpiltScene();
