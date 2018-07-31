@@ -7,6 +7,7 @@ public class ActiveAnimationCanvas : MonoBehaviour
     public Animator canvasAnimator;
 
     public readonly string animatorKey = "Active";
+       
 
     public void ActiveCanvas()
     {
