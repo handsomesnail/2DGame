@@ -54,7 +54,7 @@ public class MainSceneManager : MonoBehaviour {
             //加载一波资源 然后动Start
             FadeIn(start.transform, duration);
             start.transform.DOLocalMoveY(30, duration).SetEase(Ease.OutQuart).SetRelative(true).OnComplete(() => {
-                StartCoroutine(SceneManager.Instance.LoadSceneAsync("Zone1 - 副本"));
+                StartCoroutine(SceneManager.Instance.LoadSceneAsync("Comic"));
             });
         });
     }
@@ -105,7 +105,7 @@ public class MainSceneManager : MonoBehaviour {
         SwitchLight(true);
         yield return new WaitForSeconds(distance[9]);
 
-        StartCoroutine(SceneManager.Instance.ConvertSceneAsync("Zone1 - 副本"));
+        StartCoroutine(SceneManager.Instance.ConvertSceneAsync("Comic"));
     }
 
     private void SwitchLight(bool isLight) {
