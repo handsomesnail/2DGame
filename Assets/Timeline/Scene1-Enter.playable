@@ -1228,7 +1228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 1, g: 1, b: 1, a: 1}
-    fontSize: 48
+    fontSize: 41
     text: "\u98DE\u8239\u53D1\u51FA\u8FDE\u7EED\u8B66\u62A5\uFF0CAmanda\u9700\u8981\u53BB\u5F15\u64CE\u5BA4\u6392\u67E5\u6545\u969C\u3002"
 --- !u!114 &114262087466593388
 MonoBehaviour:
