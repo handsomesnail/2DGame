@@ -8,6 +8,9 @@ public class OnScene1Enter : MonoBehaviour
 
     private void Start()
     {
-        timeLine.TriggerTimeline();
+        if (!InputManager.deadRestart) {
+            timeLine.TriggerTimeline();
+            InputManager.deadRestart = false;
+        }
     }
 }

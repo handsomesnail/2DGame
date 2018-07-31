@@ -173,11 +173,11 @@ public sealed class InputManager : MonoBehaviour {
 
     public void Restart() {
         deadRestart = true;
-        SceneManager.Instance.ConvertSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        StartCoroutine(SceneManager.Instance.ConvertSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
     }
 
     public void ReturnMainMenu() {
-        SceneManager.Instance.ConvertSceneAsync("MainScene");
+        StartCoroutine(SceneManager.Instance.ConvertSceneAsync("MainScene"));
     }
 
 }
