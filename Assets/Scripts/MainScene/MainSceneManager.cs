@@ -19,6 +19,8 @@ public class MainSceneManager : MonoBehaviour {
     [SerializeField]
     private AudioSource audioSource;
 
+    public AudioSource rainAudio;
+
     public float[] distance;
 
     private void Awake() {
@@ -26,11 +28,9 @@ public class MainSceneManager : MonoBehaviour {
     }
 
     private void Start() {
-        if (hasStarted) {
-            return;
-        }
+        rainAudio.Play();
+        rainAudio.DOFade(1.0f, 6.0f).SetEase(Ease.InQuart);
         StartCoroutine(LoadLevel1());
-        hasStarted = true;
     }
 
     private IEnumerator LoadLevel1() {
@@ -71,6 +71,10 @@ public class MainSceneManager : MonoBehaviour {
 
     [ContextMenu("StartGame")]
     public void StartGame() {
+        if (hasStarted) {
+            return;
+        }
+        hasStarted = true;
         StartCoroutine(Bling());
     }
 
