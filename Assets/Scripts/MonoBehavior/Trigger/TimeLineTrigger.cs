@@ -21,7 +21,9 @@ public class TimeLineTrigger : MonoBehaviour
     private bool _alreadyTrigger = false;
 
     public UnityEvent OnDirectorPlay;
-    public UnityEvent OnDirectorStop;    
+    public UnityEvent OnDirectorStop;
+
+    public UnityEvent SpcialEvent;
        
     public void  TriggerTimeline()
     {
@@ -57,5 +59,9 @@ public class TimeLineTrigger : MonoBehaviour
     protected void DirectorStop()
     {
         Invoke("FinishDirector",(float)playableDirector.duration);
+    }
+
+    public void SpecialInvoke() {
+        SpcialEvent.Invoke();
     }
 }

@@ -6,11 +6,15 @@ public class OnScene1Enter : MonoBehaviour
 {
     public TimeLineTrigger timeLine;
 
+
     private void Start()
     {
-        //if (!InputManager.deadRestart) {
+        if (!InputManager.deadRestart) {
             timeLine.TriggerTimeline();
             InputManager.deadRestart = false;
-       // }
+        }
+        else {
+            GetComponent<TimeLineTrigger>().SpecialInvoke();
+        }
     }
 }
