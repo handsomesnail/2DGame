@@ -39,6 +39,8 @@ public sealed class InputManager : MonoBehaviour {
     public UnityEvent OnClickItem;//输入使用道具操作
     public UnityEvent OnPinchScene;//输入切到分屏操作
 
+    public static bool deadRestart = false;
+
     private void Awake() {
         Instance = this;
         interactable = true;
@@ -167,6 +169,15 @@ public sealed class InputManager : MonoBehaviour {
 
     public void ItemTrigger() {
         OnClickItem.Invoke();
+    }
+
+    public void Restart() {
+        deadRestart = true;
+        SceneManager.Instance.ConvertSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
+    public void ReturnMainMenu() {
+        SceneManager.Instance.ConvertSceneAsync("MainScene");
     }
 
 }

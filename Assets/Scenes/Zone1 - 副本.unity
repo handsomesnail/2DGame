@@ -1606,7 +1606,6 @@ GameObject:
   m_Component:
   - component: {fileID: 343528290}
   - component: {fileID: 343528292}
-  - component: {fileID: 343528291}
   m_Layer: 0
   m_Name: Trigger2_1
   m_TagString: Untagged
@@ -1621,42 +1620,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 343528289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66.6, y: -34.9, z: 0}
+  m_LocalPosition: {x: 65.85, y: -34.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1085486528}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &343528291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 343528289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b2d3cfd0704df94285dfa9fe43f0b3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetlevelPosIndex: 3
-  targetPos: {fileID: 1916082069}
-  BoundingVolume: {fileID: 1138803264}
-  OnTranslated:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 487740150}
-        m_MethodName: React
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!61 &343528292
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1666,7 +1635,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 15.761173}
@@ -1756,6 +1725,22 @@ Prefab:
       propertyPath: OnCameraEnterScene.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 559583585}
+    - target: {fileID: 61362932690845200, guid: bb618c51c0b837b47ad91a0504b3e330,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.08455467
+      objectReference: {fileID: 0}
+    - target: {fileID: 61362932690845200, guid: bb618c51c0b837b47ad91a0504b3e330,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 57.75884
+      objectReference: {fileID: 0}
+    - target: {fileID: 212195445893450452, guid: bb618c51c0b837b47ad91a0504b3e330,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 63e0646e967952f44a22d12c01168b03,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb618c51c0b837b47ad91a0504b3e330, type: 2}
   m_IsPrefabParent: 0
@@ -1914,48 +1899,6 @@ Transform:
   m_Father: {fileID: 662728611}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &487740148
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 487740149}
-  - component: {fileID: 487740150}
-  m_Layer: 0
-  m_Name: Reaction
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &487740149
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 487740148}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66.6, y: -34.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1085486528}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &487740150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 487740148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c78ebea41b45b734d90506f0fabd571e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reactions:
-  - {fileID: 981237417}
 --- !u!1 &499017165 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1265092641509996, guid: e28b06a8bde7f2b438efa0d411086625,
@@ -7453,6 +7396,22 @@ Prefab:
       propertyPath: OnDirectorPlay.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 61521861366280454, guid: 54c173ed324aec94484cf289ecdd457e,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.17142296
+      objectReference: {fileID: 0}
+    - target: {fileID: 61521861366280454, guid: 54c173ed324aec94484cf289ecdd457e,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 58.07707
+      objectReference: {fileID: 0}
+    - target: {fileID: 212098032238266400, guid: 54c173ed324aec94484cf289ecdd457e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3068cebb36045ea42ab530d5b668293f,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54c173ed324aec94484cf289ecdd457e, type: 2}
   m_IsPrefabParent: 0
@@ -22013,8 +21972,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 641150262}
-        m_MethodName: React
+      - m_Target: {fileID: 1661630237}
+        m_MethodName: ReturnMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22153,18 +22112,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 181456372}
   m_Script: {fileID: 11500000, guid: ec09d97b89c37884489d2110b8ca0e10, type: 3}
---- !u!114 &981237417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31183c52b7f8f06499ea2d227ceda6f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: etfx_2ddemo
 --- !u!1 &1043649599
 GameObject:
   m_ObjectHideFlags: 0
@@ -22349,7 +22296,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 343528290}
-  - {fileID: 487740149}
   m_Father: {fileID: 1610632453}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38020,6 +37966,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 21300000, guid: b3b7b6a31043808489ca96515b7b98a2,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1661630237}
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
