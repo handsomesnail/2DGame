@@ -16,6 +16,7 @@ public class SceneManager : MonoBehaviour {
     private string sceneCache;
     private AsyncOperation loadAsyncOperationCache;
 
+
     public static SceneManager Instance {
         private set; get;
     }
@@ -23,6 +24,7 @@ public class SceneManager : MonoBehaviour {
     private void Awake() {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Application.targetFrameRate = 60;
+        Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
         if (Instance != null)
             return;
         Instance = this;

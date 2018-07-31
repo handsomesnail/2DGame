@@ -14,6 +14,8 @@ public class MainSceneManager : MonoBehaviour {
     public GameObject lightObject;
     public GameObject darkObejct;
 
+    public bool hasStarted = false;
+
     [SerializeField]
     private AudioSource audioSource;
 
@@ -24,7 +26,11 @@ public class MainSceneManager : MonoBehaviour {
     }
 
     private void Start() {
+        if (hasStarted) {
+            return;
+        }
         StartCoroutine(LoadLevel1());
+        hasStarted = true;
     }
 
     private IEnumerator LoadLevel1() {

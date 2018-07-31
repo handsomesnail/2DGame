@@ -121,10 +121,10 @@ public sealed class InputManager : MonoBehaviour {
         get {
 #if UNITY_STANDALONE && !_TOUCH
             if (!Interactable)
-                return 0;
-            return Input.GetAxis("Vertical");
+                return 0;   
+            return Input.GetAxis("Vertical")*(-GravityManager.Instance.direction.y);
 #elif UNITY_ANDROID || UNITY_IPHONE || _TOUCH
-            return MoveJoyStick.axisY.axisValue;
+            return MoveJoyStick.axisY.axisValue*(-GravityManager.Instance.direction.y);
 #endif
         }
     }
@@ -172,12 +172,22 @@ public sealed class InputManager : MonoBehaviour {
     }
 
     public void Restart() {
+        Time.timeScale = 1;
         deadRestart = true;
         StartCoroutine(SceneManager.Instance.ConvertSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name));
     }
 
     public void ReturnMainMenu() {
+        Time.timeScale = 1;
         StartCoroutine(SceneManager.Instance.ConvertSceneAsync("MainScene"));
+    }
+
+    public void Pause() {
+        Time.timeScale = 0;
+    }
+
+    public void Resume() {
+        Time.timeScale = 1;
     }
 
 }

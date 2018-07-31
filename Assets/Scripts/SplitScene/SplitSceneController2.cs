@@ -6,6 +6,7 @@ using DG.Tweening;
 using UnityEngine.Events;
 using System;
 using Cinemachine;
+using System.Linq;
 
 //最好正交摄像机
 //需要背景图加上碰撞体
@@ -109,6 +110,12 @@ public class SplitSceneController2 : MonoBehaviour, IBeginDragHandler, IDragHand
             //互换位置索引和DeadZone
             Utility.Exchange(ref this.levelPosIndex, ref dropSplitSceneController2.levelPosIndex);
             Utility.Exchange(ref this.DeadZone, ref dropSplitSceneController2.DeadZone);
+
+            if (SpecialCollider.Instance != null) {
+                bool allowSpecialCollider = splitScenes.Where(scene => scene.levelIndex == 3).First().levelPosIndex == 3;
+                SpecialCollider.Instance.specialCollider.enabled = allowSpecialCollider;
+                SpecialCollider.Instance.specialCollider2.enabled = allowSpecialCollider;
+            }
         }
         else {
             this.collider2D.enabled = false;
