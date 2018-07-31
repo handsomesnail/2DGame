@@ -22,6 +22,7 @@ public class SceneManager : MonoBehaviour {
 
     private void Awake() {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        Application.targetFrameRate = 60;
         if (Instance != null)
             return;
         Instance = this;
