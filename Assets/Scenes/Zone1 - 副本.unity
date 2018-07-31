@@ -3480,8 +3480,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7032738, y: 4.126899, z: 40}
-  m_Center: {x: 4.214052, y: 1.5296009, z: 0}
+  m_Size: {x: 1.7032738, y: 4.126899, z: 42}
+  m_Center: {x: 4.214052, y: 0.9, z: -1}
 --- !u!4 &1043649601
 Transform:
   m_ObjectHideFlags: 0
@@ -3783,8 +3783,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9150314, y: 3.584948, z: 40}
-  m_Center: {x: 33.327618, y: -14.746016, z: 0}
+  m_Size: {x: 1.9150314, y: 3.55, z: 42}
+  m_Center: {x: 33.327618, y: -15, z: -1}
 --- !u!1 &1141558973 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1180744508387456, guid: ebeb67fae1a9c5c469ccb7b3f9cab44f,
@@ -4803,15 +4803,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4078554153484288, guid: e28b06a8bde7f2b438efa0d411086625, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 14.0957575
+      value: 15.078477
       objectReference: {fileID: 0}
     - target: {fileID: 4620296001649866, guid: e28b06a8bde7f2b438efa0d411086625, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -34.237587
+      value: 32.370102
       objectReference: {fileID: 0}
     - target: {fileID: 4620296001649866, guid: e28b06a8bde7f2b438efa0d411086625, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -16.80273
+      value: -17.612812
       objectReference: {fileID: 0}
     - target: {fileID: 114710732802532422, guid: e28b06a8bde7f2b438efa0d411086625,
         type: 2}
@@ -4882,7 +4882,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4620296001649866, guid: e28b06a8bde7f2b438efa0d411086625, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -43.125
+      value: -45.125
       objectReference: {fileID: 0}
     - target: {fileID: 20739036288192004, guid: e28b06a8bde7f2b438efa0d411086625,
         type: 2}
@@ -4896,7 +4896,7 @@ Prefab:
     - target: {fileID: 114710557459167206, guid: e28b06a8bde7f2b438efa0d411086625,
         type: 2}
       propertyPath: m_CameraDistance
-      value: 40
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 65453090837089550, guid: e28b06a8bde7f2b438efa0d411086625,
         type: 2}
@@ -4910,7 +4910,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4078554153484288, guid: e28b06a8bde7f2b438efa0d411086625, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -43.125
+      value: -48.125
       objectReference: {fileID: 0}
     - target: {fileID: 114356068084820740, guid: e28b06a8bde7f2b438efa0d411086625,
         type: 2}
@@ -4968,6 +4968,16 @@ Prefab:
         type: 2}
       propertyPath: m_CullingMask.m_Bits
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 65453090837089550, guid: e28b06a8bde7f2b438efa0d411086625,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 65453090837089550, guid: e28b06a8bde7f2b438efa0d411086625,
+        type: 2}
+      propertyPath: m_Center.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114988388362618514, guid: e28b06a8bde7f2b438efa0d411086625, type: 2}
