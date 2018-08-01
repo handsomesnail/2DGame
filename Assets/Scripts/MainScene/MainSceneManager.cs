@@ -74,6 +74,7 @@ public class MainSceneManager : MonoBehaviour {
         if (hasStarted) {
             return;
         }
+        InputManager.deadRestart = false;
         hasStarted = true;
         StartCoroutine(Bling());
     }
